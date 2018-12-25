@@ -75,7 +75,7 @@ export function* mapIteratorF<T = any, U = any>(f: EachIteratorCalllbackType<T, 
 export function filterArrayF<T = any>(f: EachArrayCalllbackType<T, boolean>, iterator: T[]) {
   return iterator.map(f);
 }
-export function filterObject<T = any>(f: EachObjectCalllbackType<T, boolean>, iterator: ObjectInterface<T>) {
+export function filterObjectF<T = any>(f: EachObjectCalllbackType<T, boolean>, iterator: ObjectInterface<T>) {
   const obj: Partial<ObjectInterface<T>> = {};
 
   for (const key in iterator) {
@@ -83,7 +83,7 @@ export function filterObject<T = any>(f: EachObjectCalllbackType<T, boolean>, it
   }
   return obj;
 }
-export function* filterIterator<T = any>(f: EachIteratorCalllbackType<T, boolean>, iterator: Iterable<T>) {
+export function* filterIteratorF<T = any>(f: EachIteratorCalllbackType<T, boolean>, iterator: Iterable<T>) {
   for (const value of iterator) {
     f(value, iterator) && (yield value);
   }
