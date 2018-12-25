@@ -1,6 +1,6 @@
 {
   "name": "fjx",
-  "version": "0.0.1-rc1",
+  "version": "0.0.1-rc2",
   "description": "functional javascript extension",
   "main": "dist/fjx.js",
   "module": "dist/fjx.esm.js",
@@ -16,6 +16,8 @@
   "scripts": {
     "test": "jest --watchAll",
     "coverage": "jest --coverage && print-coveralls --sort=desc",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "doc": "rm -rf ./doc && jsdoc -c jsdoc.json",
     "build": "npm run build:rollup && npm run declaration && npm run release:latest",
     "declaration": "rm -rf declaration && tsc -p tsconfig.declaration.json",
     "build:rollup": "rollup -c && print-sizes ./dist",
@@ -36,7 +38,9 @@
   },
   "homepage": "https://github.com/daybrush/fjx",
   "devDependencies": {
+    "@daybrush/jsdoc": "^0.2.1",
     "@types/jest": "^23.3.10",
+    "coveralls": "^3.0.2",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
     "print-coveralls": "^1.2.1",
