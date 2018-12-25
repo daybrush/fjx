@@ -6,12 +6,16 @@ import {
   Curry4CallbackType, Curry4, CallbackType, Func
 } from "./types";
 import { reduceArrayF } from "./function";
+import { isFunction } from "@daybrush/utils";
 
 export function isPromise<T = any>(value: any): value is Promise<T> {
   return IS_PROMISE && (value instanceof Promise);
 }
-export function isIterable<T = any>(iter: any): iter is Iterable<T> {
-  return IS_SYMBOL && !!(iter && iter[Symbol.iterator]);
+export function isIterable<T = any>(iter: any): iter is Iterable<T> | AsyncIterable<T> {
+  return IS_SYMBOL && !!(iter && (iter[Symbol.iterator] || iter[Symbol.asyncIterator]));
+}
+export function isIterator<T = any>(iter: any): iter is Iterator<T> {
+  return iter && isFunction(iter.next);
 }
 export function curry<A>(f: () => A): () => A;
 export function curry<A, B>(f: Curry1CallbackType<A, B>): Curry1<A, B>;

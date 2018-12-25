@@ -26,15 +26,15 @@ export type ReduceIteratorCallbackType<T, U = T> =
 export type ReduceArrayAsyncCallbackType<T, U = T> =
   (previousValue?: T, currentValue?: U, currentIndex?: number, arr?: Array<U | Promise<U>>) => T | Promise<T>;
 export type ReduceObjectAsyncCallbackType<T, U = T> =
-  (previousValue?: T, currentValue?: U, currentIndex?: string, arr?: ObjectInterface<U| Promise<U>>) => T | Promise<T>;
+  (previousValue?: T, currentValue?: U, currentIndex?: string, arr?: ObjectInterface<U | Promise<U>>) => T | Promise<T>;
 export type ReduceIteratorAsyncCallbackType<T, U = T> =
   (previousValue?: T, currentValue?: U, iterator?: Iterable<U | Promise<U>>) => T | Promise<T>;
 
-export interface EachInterface<T, U> {
-  each: (callbackFn: EachArrayCalllbackType<T, U> | EachObjectCalllbackType<T, U>) => this;
+export interface EachInterface<T> {
+  each: (callbackFn: EachArrayCalllbackType<T, void> | EachObjectCalllbackType<T, void>) => this;
 }
-export interface ForEachInterface<T, U> {
-  forEach: (callbackFn: EachArrayCalllbackType<T, U> | EachObjectCalllbackType<T, U>) => this;
+export interface ForEachInterface<T> {
+  forEach: (callbackFn: EachArrayCalllbackType<T, void> | EachObjectCalllbackType<T, void>) => this;
 }
 export interface ObjectInterface<T> {
   [key: string]: T;
