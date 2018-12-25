@@ -16,6 +16,25 @@ export function exec<T, U = T>(v: Promise<T> | T, f: (pv: T) => U): Promise<U> |
 export function exec<T, U = T>(v: T | Promise<T>, f: (pv: T) => U) {
   return isPromise(v) ? v.then(pv => f(pv)) : f(v);
 }
+// async to await
+export function asyncArray<T>(iterator: Array<T | Promise<T>>) {
+  return reduceArrayF<T[] | Promise<T[]>, T | Promise<T>>(async (prev, cur) => {
+    (await prev).push(await cur);
+    return prev;
+  }, iterator, []);
+}
+export function asyncObject<T>(iterator: ObjectInterface<T | Promise<T>>) {
+  return reduceObjectF<ObjectInterface<T> | Promise<ObjectInterface<T>>, T | Promise<T>>(async (prev, cur, key) => {
+    (await prev)[key] = (await cur);
+    return prev;
+  }, iterator, {});
+}
+export function toArray<T = any>(iterator: Iterable<T>) {
+  return Array.from(iterator);
+}
+export function asyncIterator<T = any>(iterator: Iterable<T>) {
+    return Promise.all(toArray(iterator)).then(list => list[Symbol.iterator]());
+}
 // async reduce
 export function asyncReduceArrayF<T, U = T>(
   callbackFn: ReduceArrayAsyncCallbackType<T, U>,
