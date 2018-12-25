@@ -1,3 +1,5 @@
+export type Func<A = any, B = any> = (a: A) => B;
+
 export type CallbackType<T = any> = (...args: any[]) => T;
 export interface EventParamterType {
   [name: string]: CallbackType | CallbackType[];
