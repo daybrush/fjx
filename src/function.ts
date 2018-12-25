@@ -88,8 +88,13 @@ export function* filterIteratorF<T = any>(f: EachIteratorCalllbackType<T, boolea
     f(value, iterator) && (yield value);
   }
 }
-
-export function head<T>(iterator: Iterable<T>) {
+export function headArray<T>(iterator: T[]) {
+  return iterator[0];
+}
+export function tailArray<T>(iterator: T[]) {
+  return iterator[iterator.length - 1];
+}
+export function head<T>(iterator: Iterable<T> | AsyncIterable<T>) {
   for (const value of iterator) {
     return value;
   }
