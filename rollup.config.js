@@ -3,13 +3,15 @@ import PrototypeMinify from "rollup-plugin-prototype-minify";
 import replace from "rollup-plugin-replace";
 import { uglify } from "rollup-plugin-uglify";
 import resolve from "rollup-plugin-node-resolve";
+import es3 from "rollup-plugin-es3";
+
 
 const pkg = require("./package.json");
 const banner = require("./config/banner");
 
 const transpiler = typescript({
   "module": "es2015",
-  "target": "es3",
+  "target": "es5",
   "lib": ["es2015", "dom"],
   "exclude": "node_modules/**",
   "sourceMap": true,
@@ -30,6 +32,7 @@ const uglifyCode = uglify({
 });
 const plugins = [
   transpiler,
+  es3({sourcemap: true}),
   replace({
     "#__VERSION__#": pkg.version,
     "/** @class */": "/*#__PURE__*/",
@@ -57,23 +60,29 @@ export default [
       file: `./dist/fjx.esm.js`,
     },
   }, {
-    input: 'src/index.umd.ts',
-    plugins: [...plugins, resolvePlugin],
+    treeshake: {
+      pureExternalModules: true,
+    },
+    input: 'src/index.ts',
+    plugins: [...plugins, resolvePlugin, ],
     output: {
       ...output,
       format: "umd",
       name: "fjx",
-      exports: "default",
+      exports: "named",
       file: `./dist/fjx.js`,
     },
   }, {
-    input: 'src/index.umd.ts',
+    treeshake: {
+      pureExternalModules: true,
+    },
+    input: 'src/index.ts',
     plugins: [...plugins, resolvePlugin, uglifyCode],
     output: {
       ...output,
       format: "umd",
       name: "fjx",
-      exports: "default",
+      exports: "named",
       file: `./dist/fjx.min.js`,
     },
   }

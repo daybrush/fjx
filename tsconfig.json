@@ -11,7 +11,7 @@
 		"noUnusedLocals": true,
 		"skipLibCheck": true,
 		"moduleResolution": "node",
-		"lib": ["es2016", "dom"],
+		"lib": ["esnext", "dom"],
 	},
 	"include": ["./src/**/*.ts"],
 	"exclude": ["node_modules"]

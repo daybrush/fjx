@@ -46,6 +46,7 @@
     "print-coveralls": "^1.2.1",
     "print-sizes": "0.0.3",
     "rollup": "^0.67.4",
+    "rollup-plugin-es3": "^1.1.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-prototype-minify": "^1.0.4",
     "rollup-plugin-replace": "^2.1.0",
