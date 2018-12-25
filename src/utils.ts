@@ -36,11 +36,22 @@ export function curry(f: CallbackType): any {
   return nest(length, []);
 }
 
+export function _pipe(args: Func[]): Func {
+  return (a: any) => {
+    return reduceArrayF((prev, cur) => cur(prev), args, a);
+  };
+}
+
 export function pipe<A, B, C, D, E>(a: Func<A, B>, b: Func<B, C>, c: Func<C, D>, d: Func<D, E>): Func<A, E>;
 export function pipe<A, B, C, D>(a: Func<A, B>, b: Func<B, C>, c: Func<C, D>): Func<A, D>;
 export function pipe<A, B, C>(a: Func<A, B>, b: Func<B, C>): Func<A, C>;
 export function pipe(...args: Func[]): Func {
-  return (a: any) => {
-    return reduceArrayF((prev, cur) => cur(prev), args, a);
-  };
+  return _pipe(args);
+}
+
+export function compose<A, B, C, D, E>(a: Func<D, E>, b: Func<C, D>, c: Func<B, C>, d: Func<A, B>): Func<A, E>;
+export function compose<A, B, C, D>(a: Func<C, D>, b: Func<B, C>, c: Func<A, B>): Func<A, D>;
+export function compose<A, B, C>(a: Func<B, C>, b: Func<A, B>): Func<A, C>;
+export function compose(...args: Func[]): Func {
+  return _pipe(args.reverse());
 }
