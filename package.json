@@ -22,8 +22,9 @@
     "declaration": "rm -rf declaration && tsc -p tsconfig.declaration.json",
     "build:rollup": "rollup -c && print-sizes ./dist",
     "deploy": "gh-pages -d ./demo --dest=./ --add",
-    "release": "npm run build && npm run release:current && npm run deploy",
+    "release": "npm run build && npm run release:current && npm run release:doc && npm run deploy",
     "release:mkdir": "mkdir -p ./demo/release",
+    "release:doc": "npm run doc && cp -a ./doc/. ./demo/release/$npm_package_version/doc &&  cp -a ./doc/. ./demo/release/latest/doc",
     "release:current": "npm run release:mkdir && rm -rf ./demo/release/$npm_package_version && cp -a ./dist/. ./demo/release/$npm_package_version",
     "release:latest": "npm run release:mkdir && rm -rf ./demo/release/latest && cp -a ./dist/. ./demo/release/latest"
   },
@@ -41,6 +42,7 @@
     "@daybrush/jsdoc": "^0.2.1",
     "@types/jest": "^23.3.10",
     "coveralls": "^3.0.2",
+    "daybrush-jsdoc-template": "^1.3.2",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
     "print-coveralls": "^1.2.1",
