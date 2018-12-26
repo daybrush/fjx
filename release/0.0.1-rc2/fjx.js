@@ -257,8 +257,8 @@ repository: git+https://github.com/daybrush/fjx.git
   */
   var IS_SYMBOL = typeof Symbol !== "undefined";
   /**
-    * @memberof Consts
-    */
+  * @memberof Consts
+  */
 
   var IS_PROMISE = typeof Promise !== "undefined";
 
@@ -271,7 +271,7 @@ repository: git+https://github.com/daybrush/fjx.git
    * @function
    */
 
-  function reduceArrayF(callbackFn, iterator, initial) {
+  function reduceArrayF(callbackFn, initial, iterator) {
     return iterator.reduce(callbackFn, initial);
   }
   /**
@@ -279,7 +279,7 @@ repository: git+https://github.com/daybrush/fjx.git
    * @function
    */
 
-  function reduceObjectF(callbackFn, iterator, initial) {
+  function reduceObjectF(callbackFn, initial, iterator) {
     var cur = initial;
 
     for (var key in iterator) {
@@ -293,7 +293,7 @@ repository: git+https://github.com/daybrush/fjx.git
    * @function
    */
 
-  function reduceIteratorF(callbackFn, iterator, initial) {
+  function reduceIteratorF(callbackFn, initial, iterator) {
     var e_1, _a;
 
     var cur = initial;
@@ -321,6 +321,7 @@ repository: git+https://github.com/daybrush/fjx.git
   /**
    * @memberof Functions
    * @function
+   * @returns {} The calling array itself
    */
 
   function eachArrayF(f, iterator) {
@@ -330,6 +331,7 @@ repository: git+https://github.com/daybrush/fjx.git
   /**
    * @memberof Functions
    * @function
+   * @returns {} The calling object itself
    */
 
   function eachObjectF(f, iterator) {
@@ -342,6 +344,7 @@ repository: git+https://github.com/daybrush/fjx.git
   /**
    * @memberof Functions
    * @function
+  * @returns {} The calling iterator itself
    */
 
   function eachIteratorF(f, iterator) {
@@ -464,7 +467,7 @@ repository: git+https://github.com/daybrush/fjx.git
    */
 
   function filterArrayF(f, iterator) {
-    return iterator.map(f);
+    return iterator.filter(f);
   }
   /**
    * @memberof Functions
@@ -603,7 +606,7 @@ repository: git+https://github.com/daybrush/fjx.git
   function tail(iterator) {
     return reduceIteratorF(function (prev) {
       return prev;
-    }, iterator, void 0);
+    }, void 0, iterator);
   }
 
   /*
@@ -842,7 +845,7 @@ repository: git+https://github.com/daybrush/fjx.git
     return function (a) {
       return reduceArrayF(function (prev, cur) {
         return cur(prev);
-      }, args, a);
+      }, a, args);
     };
   }
   function pipe() {
@@ -907,7 +910,7 @@ repository: git+https://github.com/daybrush/fjx.git
           }
         });
       });
-    }, iterator, []);
+    }, [], iterator);
   }
   /**
    * @memberof AsyncFunctions
@@ -942,7 +945,7 @@ repository: git+https://github.com/daybrush/fjx.git
           }
         });
       });
-    }, iterator, {});
+    }, {}, iterator);
   }
   /**
    * @memberof AsyncFunctions
@@ -965,7 +968,7 @@ repository: git+https://github.com/daybrush/fjx.git
    * @memberof AsyncFunctions
    */
 
-  function asyncReduceArrayF(callbackFn, iterator, initial) {
+  function asyncReduceArrayF(callbackFn, initial, iterator) {
     var _this = this;
 
     return reduceArrayF(function (prev, cur, index) {
@@ -992,13 +995,13 @@ repository: git+https://github.com/daybrush/fjx.git
           }
         });
       });
-    }, iterator, initial);
+    }, initial, iterator);
   }
   /**
    * @memberof AsyncFunctions
    */
 
-  function asyncReduceObjectF(callbackFn, iterator, initial) {
+  function asyncReduceObjectF(callbackFn, initial, iterator) {
     var _this = this;
 
     return reduceObjectF(function (prev, cur, key) {
@@ -1025,13 +1028,13 @@ repository: git+https://github.com/daybrush/fjx.git
           }
         });
       });
-    }, iterator, initial);
+    }, initial, iterator);
   }
   /**
    * @memberof AsyncFunctions
    */
 
-  function asyncReduceIteratorF(callbackFn, iterator, initial) {
+  function asyncReduceIteratorF(callbackFn, initial, iterator) {
     var _this = this;
 
     return reduceIteratorF(function (prev, cur) {
@@ -1058,7 +1061,7 @@ repository: git+https://github.com/daybrush/fjx.git
           }
         });
       });
-    }, iterator, initial);
+    }, initial, iterator);
   } // async each
 
   /**
@@ -1073,7 +1076,7 @@ repository: git+https://github.com/daybrush/fjx.git
         , asyncReduceArrayF(function (prev, cur, index) {
           f(cur, index, iterator);
           return cur;
-        }, iterator, void 0).then(function () {
+        }, void 0, iterator).then(function () {
           return iterator;
         })];
       });
@@ -1091,7 +1094,7 @@ repository: git+https://github.com/daybrush/fjx.git
         , asyncReduceObjectF(function (prev, cur, key) {
           f(cur, key, iterator);
           return cur;
-        }, iterator, void 0).then(function () {
+        }, void 0, iterator).then(function () {
           return iterator;
         })];
       });
@@ -1180,7 +1183,7 @@ repository: git+https://github.com/daybrush/fjx.git
         , asyncReduceArrayF(function (prev, cur, index) {
           prev.push(f(cur, index, iterator));
           return prev;
-        }, iterator, [])];
+        }, [], iterator)];
       });
     });
   }
@@ -1196,7 +1199,7 @@ repository: git+https://github.com/daybrush/fjx.git
         , asyncReduceObjectF(function (prev, cur, key) {
           prev[key] = f(cur, key, iterator);
           return prev;
-        }, iterator, {})];
+        }, {}, iterator)];
       });
     });
   }
@@ -1293,7 +1296,7 @@ repository: git+https://github.com/daybrush/fjx.git
         , asyncReduceArrayF(function (prev, cur, index) {
           f(cur, index, iterator) && prev.push(cur);
           return prev;
-        }, iterator, [])];
+        }, [], iterator)];
       });
     });
   }
@@ -1309,7 +1312,7 @@ repository: git+https://github.com/daybrush/fjx.git
         , asyncReduceObjectF(function (prev, cur, key) {
           f(cur, key, iterator) && (prev[key] = cur);
           return prev;
-        }, iterator, {})];
+        }, {}, iterator)];
       });
     });
   }
@@ -1524,7 +1527,6 @@ repository: git+https://github.com/daybrush/fjx.git
    * @function
    * @param {} callbackFn - Function that produces an element of the new Iterator.
    * @param {} [iterator] - The iterator to call this function.
-   * @return {} HAHAH
    * @example
   asyncMapIterator(v => console.log(v), [fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3]);
 

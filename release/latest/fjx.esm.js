@@ -253,8 +253,8 @@ function __asyncGenerator(thisArg, _arguments, generator) {
 */
 var IS_SYMBOL = typeof Symbol !== "undefined";
 /**
-  * @memberof Consts
-  */
+* @memberof Consts
+*/
 
 var IS_PROMISE = typeof Promise !== "undefined";
 
@@ -267,7 +267,7 @@ var IS_PROMISE = typeof Promise !== "undefined";
  * @function
  */
 
-function reduceArrayF(callbackFn, iterator, initial) {
+function reduceArrayF(callbackFn, initial, iterator) {
   return iterator.reduce(callbackFn, initial);
 }
 /**
@@ -275,7 +275,7 @@ function reduceArrayF(callbackFn, iterator, initial) {
  * @function
  */
 
-function reduceObjectF(callbackFn, iterator, initial) {
+function reduceObjectF(callbackFn, initial, iterator) {
   var cur = initial;
 
   for (var key in iterator) {
@@ -289,7 +289,7 @@ function reduceObjectF(callbackFn, iterator, initial) {
  * @function
  */
 
-function reduceIteratorF(callbackFn, iterator, initial) {
+function reduceIteratorF(callbackFn, initial, iterator) {
   var e_1, _a;
 
   var cur = initial;
@@ -317,6 +317,7 @@ function reduceIteratorF(callbackFn, iterator, initial) {
 /**
  * @memberof Functions
  * @function
+ * @returns {} The calling array itself
  */
 
 function eachArrayF(f, iterator) {
@@ -326,6 +327,7 @@ function eachArrayF(f, iterator) {
 /**
  * @memberof Functions
  * @function
+ * @returns {} The calling object itself
  */
 
 function eachObjectF(f, iterator) {
@@ -338,6 +340,7 @@ function eachObjectF(f, iterator) {
 /**
  * @memberof Functions
  * @function
+* @returns {} The calling iterator itself
  */
 
 function eachIteratorF(f, iterator) {
@@ -460,7 +463,7 @@ function mapIteratorF(f, iterator) {
  */
 
 function filterArrayF(f, iterator) {
-  return iterator.map(f);
+  return iterator.filter(f);
 }
 /**
  * @memberof Functions
@@ -599,7 +602,7 @@ function head(iterator) {
 function tail(iterator) {
   return reduceIteratorF(function (prev) {
     return prev;
-  }, iterator, void 0);
+  }, void 0, iterator);
 }
 
 /**
@@ -647,7 +650,7 @@ function _pipe(args) {
   return function (a) {
     return reduceArrayF(function (prev, cur) {
       return cur(prev);
-    }, args, a);
+    }, a, args);
   };
 }
 function pipe() {
@@ -712,7 +715,7 @@ function asyncArray(iterator) {
         }
       });
     });
-  }, iterator, []);
+  }, [], iterator);
 }
 /**
  * @memberof AsyncFunctions
@@ -747,7 +750,7 @@ function asyncObject(iterator) {
         }
       });
     });
-  }, iterator, {});
+  }, {}, iterator);
 }
 /**
  * @memberof AsyncFunctions
@@ -770,7 +773,7 @@ function asyncIterator(iterator) {
  * @memberof AsyncFunctions
  */
 
-function asyncReduceArrayF(callbackFn, iterator, initial) {
+function asyncReduceArrayF(callbackFn, initial, iterator) {
   var _this = this;
 
   return reduceArrayF(function (prev, cur, index) {
@@ -797,13 +800,13 @@ function asyncReduceArrayF(callbackFn, iterator, initial) {
         }
       });
     });
-  }, iterator, initial);
+  }, initial, iterator);
 }
 /**
  * @memberof AsyncFunctions
  */
 
-function asyncReduceObjectF(callbackFn, iterator, initial) {
+function asyncReduceObjectF(callbackFn, initial, iterator) {
   var _this = this;
 
   return reduceObjectF(function (prev, cur, key) {
@@ -830,13 +833,13 @@ function asyncReduceObjectF(callbackFn, iterator, initial) {
         }
       });
     });
-  }, iterator, initial);
+  }, initial, iterator);
 }
 /**
  * @memberof AsyncFunctions
  */
 
-function asyncReduceIteratorF(callbackFn, iterator, initial) {
+function asyncReduceIteratorF(callbackFn, initial, iterator) {
   var _this = this;
 
   return reduceIteratorF(function (prev, cur) {
@@ -863,7 +866,7 @@ function asyncReduceIteratorF(callbackFn, iterator, initial) {
         }
       });
     });
-  }, iterator, initial);
+  }, initial, iterator);
 } // async each
 
 /**
@@ -878,7 +881,7 @@ function asyncEachArrayF(f, iterator) {
       , asyncReduceArrayF(function (prev, cur, index) {
         f(cur, index, iterator);
         return cur;
-      }, iterator, void 0).then(function () {
+      }, void 0, iterator).then(function () {
         return iterator;
       })];
     });
@@ -896,7 +899,7 @@ function asyncEachObjectF(f, iterator) {
       , asyncReduceObjectF(function (prev, cur, key) {
         f(cur, key, iterator);
         return cur;
-      }, iterator, void 0).then(function () {
+      }, void 0, iterator).then(function () {
         return iterator;
       })];
     });
@@ -985,7 +988,7 @@ function asyncMapArrayF(f, iterator) {
       , asyncReduceArrayF(function (prev, cur, index) {
         prev.push(f(cur, index, iterator));
         return prev;
-      }, iterator, [])];
+      }, [], iterator)];
     });
   });
 }
@@ -1001,7 +1004,7 @@ function asyncMapObjectF(f, iterator) {
       , asyncReduceObjectF(function (prev, cur, key) {
         prev[key] = f(cur, key, iterator);
         return prev;
-      }, iterator, {})];
+      }, {}, iterator)];
     });
   });
 }
@@ -1098,7 +1101,7 @@ function asyncFilterArrayF(f, iterator) {
       , asyncReduceArrayF(function (prev, cur, index) {
         f(cur, index, iterator) && prev.push(cur);
         return prev;
-      }, iterator, [])];
+      }, [], iterator)];
     });
   });
 }
@@ -1114,7 +1117,7 @@ function asyncFilterObjectF(f, iterator) {
       , asyncReduceObjectF(function (prev, cur, key) {
         f(cur, key, iterator) && (prev[key] = cur);
         return prev;
-      }, iterator, {})];
+      }, {}, iterator)];
     });
   });
 }
@@ -1329,7 +1332,6 @@ curry(asyncReduceIteratorF);
  * @function
  * @param {} callbackFn - Function that produces an element of the new Iterator.
  * @param {} [iterator] - The iterator to call this function.
- * @return {} HAHAH
  * @example
 asyncMapIterator(v => console.log(v), [fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3]);
 

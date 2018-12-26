@@ -61,7 +61,8 @@
  */
 export function reduceArrayF&lt;T, U = T>(
   callbackFn: ReduceArrayCallbackType&lt;T, U>,
-  iterator: U[], initial: T) {
+  initial: T,
+  iterator: U[]): T {
   return iterator.reduce(callbackFn, initial);
 }
 /**
@@ -70,7 +71,8 @@ export function reduceArrayF&lt;T, U = T>(
  */
 export function reduceObjectF&lt;T, U = T>(
   callbackFn: ReduceObjectCallbackType&lt;T, U>,
-  iterator: ObjectInterface&lt;U>, initial: T) {
+  initial: T,
+  iterator: ObjectInterface&lt;U>): T {
   let cur = initial;
 
   for (const key in iterator) {
@@ -84,7 +86,8 @@ export function reduceObjectF&lt;T, U = T>(
  */
 export function reduceIteratorF&lt;T, U = T>(
   callbackFn: ReduceIteratorCallbackType&lt;T, U>,
-  iterator: Iterable&lt;U>, initial: T) {
+  initial: T,
+  iterator: Iterable&lt;U>): T {
   let cur = initial;
 
   for (const value of iterator) {
@@ -97,16 +100,19 @@ export function reduceIteratorF&lt;T, U = T>(
 /**
  * @memberof Functions
  * @function
+ * @returns {} The calling array itself
  */
-export function eachArrayF&lt;T = any>(f: EachArrayCalllbackType&lt;T, void>, iterator: T[]) {
+export function eachArrayF&lt;T = any>(f: EachArrayCalllbackType&lt;T, void>, iterator: T[]): T[] {
   iterator.forEach(f);
   return iterator;
 }
 /**
  * @memberof Functions
  * @function
+ * @returns {} The calling object itself
  */
-export function eachObjectF&lt;T = any>(f: EachObjectCalllbackType&lt;T, void>, iterator: ObjectInterface&lt;T>) {
+export function eachObjectF&lt;T = any>(f: EachObjectCalllbackType&lt;T, void>, iterator: ObjectInterface&lt;T>):
+  ObjectInterface&lt;T> {
   for (const key in iterator) {
     f(iterator[key], key, iterator);
   }
@@ -115,8 +121,9 @@ export function eachObjectF&lt;T = any>(f: EachObjectCalllbackType&lt;T, void>, 
 /**
  * @memberof Functions
  * @function
+* @returns {} The calling iterator itself
  */
-export function eachIteratorF&lt;T = any>(f: EachIteratorCalllbackType&lt;T, void>, iterator: Iterable&lt;T>) {
+export function eachIteratorF&lt;T = any>(f: EachIteratorCalllbackType&lt;T, void>, iterator: Iterable&lt;T>): Iterable&lt;T> {
   for (const value of iterator) {
     f(value, iterator);
   }
@@ -128,14 +135,15 @@ export function eachIteratorF&lt;T = any>(f: EachIteratorCalllbackType&lt;T, voi
  * @memberof Functions
  * @function
  */
-export function mapArrayF&lt;T = any, U = any>(f: EachArrayCalllbackType&lt;T, U>, iterator: T[]) {
+export function mapArrayF&lt;T = any, U = any>(f: EachArrayCalllbackType&lt;T, U>, iterator: T[]): U[] {
   return iterator.map&lt;U>(f);
 }
 /**
  * @memberof Functions
  * @function
  */
-export function mapObjectF&lt;T = any, U = any>(f: EachObjectCalllbackType&lt;T, U>, iterator: ObjectInterface&lt;T>) {
+export function mapObjectF&lt;T = any, U = any>(f: EachObjectCalllbackType&lt;T, U>, iterator: ObjectInterface&lt;T>):
+  ObjectInterface&lt;U> {
   const obj: ObjectInterface&lt;U> = {};
 
   for (const key in iterator) {
@@ -158,14 +166,15 @@ export function* mapIteratorF&lt;T = any, U = any>(f: EachIteratorCalllbackType&
  * @memberof Functions
  * @function
  */
-export function filterArrayF&lt;T = any>(f: EachArrayCalllbackType&lt;T, boolean>, iterator: T[]) {
-  return iterator.map(f);
+export function filterArrayF&lt;T = any>(f: EachArrayCalllbackType&lt;T, boolean>, iterator: T[]): T[] {
+  return iterator.filter(f);
 }
 /**
  * @memberof Functions
  * @function
  */
-export function filterObjectF&lt;T = any>(f: EachObjectCalllbackType&lt;T, boolean>, iterator: ObjectInterface&lt;T>) {
+export function filterObjectF&lt;T = any>(f: EachObjectCalllbackType&lt;T, boolean>, iterator: ObjectInterface&lt;T>):
+  ObjectInterface&lt;T> {
   const obj: Partial&lt;ObjectInterface&lt;T>> = {};
 
   for (const key in iterator) {
@@ -177,7 +186,8 @@ export function filterObjectF&lt;T = any>(f: EachObjectCalllbackType&lt;T, boole
  * @memberof Functions
  * @function
  */
-export function* filterIteratorF&lt;T = any>(f: EachIteratorCalllbackType&lt;T, boolean>, iterator: Iterable&lt;T>) {
+export function* filterIteratorF&lt;T = any>(f: EachIteratorCalllbackType&lt;T, boolean>, iterator: Iterable&lt;T>):
+  IterableIterator&lt;T> {
   for (const value of iterator) {
     f(value, iterator) &amp;&amp; (yield value);
   }
@@ -186,21 +196,21 @@ export function* filterIteratorF&lt;T = any>(f: EachIteratorCalllbackType&lt;T, 
  * @memberof Functions
  * @function
  */
-export function headArray&lt;T>(iterator: T[]) {
+export function headArray&lt;T>(iterator: T[]): T {
   return iterator[0];
 }
 /**
  * @memberof Functions
  * @function
  */
-export function tailArray&lt;T>(iterator: T[]) {
+export function tailArray&lt;T>(iterator: T[]): T {
   return iterator[iterator.length - 1];
 }
 /**
  * @memberof Functions
  * @function
  */
-export function head&lt;T>(iterator: Iterable&lt;T> | AsyncIterable&lt;T>) {
+export function head&lt;T>(iterator: Iterable&lt;T> | AsyncIterable&lt;T>): T {
   for (const value of iterator) {
     return value;
   }
@@ -209,8 +219,8 @@ export function head&lt;T>(iterator: Iterable&lt;T> | AsyncIterable&lt;T>) {
  * @memberof Functions
  * @function
  */
-export function tail&lt;T>(iterator: Iterable&lt;T>) {
-  return reduceIteratorF&lt;T>(prev => prev, iterator, void 0);
+export function tail&lt;T>(iterator: Iterable&lt;T>): T {
+  return reduceIteratorF&lt;T>(prev => prev, void 0, iterator);
 }
 </code></pre>
         </article>
@@ -236,7 +246,7 @@ nav li[file="function"] h4, nav li[file="function"] ul {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 0.2.1</a> on Thu Dec 27 2018 00:02:33 GMT+0900 (Korean Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 0.2.1</a> on Thu Dec 27 2018 00:27:39 GMT+0900 (Korean Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
 </footer>
 
 <script>prettyPrint();</script>
