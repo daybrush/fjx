@@ -4,9 +4,16 @@ fjx is an functional javascript extension. Support Typescript
 
 Tree shaking is supported and only used functions are included.
 
+[**API Documents**](http://daybrush.com/fjx/release/latest/doc)
 ## Functional Utils
 * curry (The type supports up to five arguments of the function.)
 * pipe (The type supports up to five arguments of the function.)
+* head
+* tail
+* headArray
+* tailArray
+* isIterable
+* isIterator
 
 ## Currying Functions (Support types)
 * eachArray
