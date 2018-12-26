@@ -8,6 +8,10 @@ import {
 import { reduceArrayF } from "./function";
 import { isFunction } from "@daybrush/utils";
 
+/**
+ * @namespace utils
+ */
+
 export function isPromise<T = any>(value: any): value is Promise<T> {
   return IS_PROMISE && (value instanceof Promise);
 }
@@ -17,11 +21,16 @@ export function isIterable<T = any>(iter: any): iter is Iterable<T> | AsyncItera
 export function isIterator<T = any>(iter: any): iter is Iterator<T> {
   return iter && isFunction(iter.next);
 }
+
 export function curry<A>(f: () => A): () => A;
 export function curry<A, B>(f: Curry1CallbackType<A, B>): Curry1<A, B>;
 export function curry<A, B, C>(f: Curry2CallbackType<A, B, C>): Curry2<A, B, C>;
 export function curry<A, B, C, D>(f: Curry3CallbackType<A, B, C, D>): Curry3<A, B, C, D>;
 export function curry<A, B, C, D, E>(f: Curry4CallbackType<A, B, C, D, E>): Curry4<A, B, C, D, E>;
+/**
+ * @memberof utils
+ * @function
+ */
 export function curry(f: CallbackType): any {
   const length = f.length;
 
