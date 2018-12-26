@@ -51,7 +51,7 @@ export function curry(f: CallbackType): any {
 
 export function _pipe(args: Func[]): Func {
   return (a: any) => {
-    return reduceArrayF((prev, cur) => cur(prev), args, a);
+    return reduceArrayF((prev, cur) => cur(prev), a, args);
   };
 }
 
