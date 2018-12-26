@@ -1,0 +1,4777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Currying - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="Currying - Documentation"/>
+
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><ul class="namespaces"><li file="asyncfunctions"><a href="AsyncFunctions.html">AsyncFunctions</a><h4><a href="AsyncFunctions.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncArray">asyncArray</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncEachArrayF">asyncEachArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncEachIteratorF">asyncEachIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncEachObjectF">asyncEachObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncFilterArrayF">asyncFilterArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncFilterIteratorF">asyncFilterIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncFilterObjectF">asyncFilterObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncIterator">asyncIterator</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncMapArrayF">asyncMapArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncMapIteratorF">asyncMapIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncMapObjectF">asyncMapObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncObject">asyncObject</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncReduceArrayF">asyncReduceArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncReduceIteratorF">asyncReduceIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncReduceObjectF">asyncReduceObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.exec">exec</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.toArray">toArray</a></li></ul></li><li file="consts"><a href="Consts.html">Consts</a><h4><a href="Consts.html#static members">Static Members</a></h4><ul class='static members'><li data-type='member'><a href="Consts.html#.exports.IS_PROMISE">IS_PROMISE</a></li></ul></li><li file="currying"><a href="Currying.html">Currying</a><h4><a href="Currying.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="Currying.html#.exports.asyncMapIterator">asyncMapIterator</a></li><li data-type='method'><a href="Currying.html#.exports.asyncReduceIterator">asyncReduceIterator</a></li><li data-type='method'><a href="Currying.html#.exports.eachIterator">eachIterator</a></li><li data-type='method'><a href="Currying.html#.exports.eachObject">eachObject</a></li><li data-type='method'><a href="Currying.html#.exports.filterArray">filterArray</a></li><li data-type='method'><a href="Currying.html#.exports.filterIterator">filterIterator</a></li><li data-type='method'><a href="Currying.html#.exports.filterObject">filterObject</a></li><li data-type='method'><a href="Currying.html#.exports.mapArray">mapArray</a></li><li data-type='method'><a href="Currying.html#.exports.mapIterator">mapIterator</a></li><li data-type='method'><a href="Currying.html#.exports.mapObject">mapObject</a></li><li data-type='method'><a href="Currying.html#.exports.reduceArray">reduceArray</a></li><li data-type='method'><a href="Currying.html#.exports.reduceIterator">reduceIterator</a></li><li data-type='method'><a href="Currying.html#.exports.reduceObject">reduceObject</a></li></ul></li><li file="functions"><a href="Functions.html">Functions</a><h4><a href="Functions.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="Functions.html#.exports.eachArrayF">eachArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.eachIteratorF">eachIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.eachObjectF">eachObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.filterArrayF">filterArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.filterIteratorF">filterIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.filterObjectF">filterObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.head">head</a></li><li data-type='method'><a href="Functions.html#.exports.headArray">headArray</a></li><li data-type='method'><a href="Functions.html#.exports.mapArrayF">mapArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.mapIteratorF">mapIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.mapObjectF">mapObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.reduceArrayF">reduceArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.reduceIteratorF">reduceIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.reduceObjectF">reduceObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.tail">tail</a></li><li data-type='method'><a href="Functions.html#.exports.tailArray">tailArray</a></li></ul></li><li file="utils"><a href="utils.html">utils</a><h4><a href="utils.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="utils.html#.exports.curry">curry</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">Currying</h1>
+    
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2>
+        Currying
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+        <h3 class="subsection-title" id="methods">Methods</h3>
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.asyncMapIterator"><span class="type-signature">(static) </span>asyncMapIterator<span class="signature">(callbackFn, iterator<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Curry1&lt;Iterable&lt;T>, AsyncIterableIterator&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line172">line 172</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachAsyncIteratorCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Function that produces an element of the new Iterator.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iterator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The iterator to call this function.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.asyncMapIterator">
+        asyncMapIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(callbackFn)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">AsyncIterableIterator</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachAsyncIteratorCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.asyncMapIterator">
+        asyncMapIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(callbackFn, iterator)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">AsyncIterableIterator</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachAsyncIteratorCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iterator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>asyncMapIterator(v => console.log(v), [fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3]);
+
+// curry
+const func = asyncMapIterator(v => console.log(v));
+
+func([fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3])</code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    HAHAH
+</div>
+
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;Iterable&lt;T>, AsyncIterableIterator&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.asyncReduceIterator"><span class="type-signature">(static) </span>asyncReduceIterator<span class="signature">(a, b, c)</span><span class="type-signature"> &rarr; {Promise&lt;T>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line153">line 153</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorAsyncCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;U | Promise&lt;U>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.asyncReduceIterator">
+        asyncReduceIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b, c)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Promise</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorAsyncCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;U | Promise&lt;U>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.asyncReduceIterator">
+        asyncReduceIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Promise</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorAsyncCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;U | Promise&lt;U>></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.asyncReduceIterator">
+        asyncReduceIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry2</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-uniontype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">U</span></span> | <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Promise</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">U</span></span></span>&gt;</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Promise</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorAsyncCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise&lt;T></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.eachIterator"><span class="type-signature">(static) </span>eachIterator<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;Iterable&lt;T>, Iterable&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line87">line 87</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.eachIterator">
+        eachIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.eachIterator">
+        eachIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;Iterable&lt;T>, Iterable&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.eachObject"><span class="type-signature">(static) </span>eachObject<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line79">line 79</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.eachObject">
+        eachObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.eachObject">
+        eachObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.filterArray"><span class="type-signature">(static) </span>filterArray<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;T[], T[]>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line119">line 119</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachArrayCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.filterArray">
+        filterArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>[]</span>, <span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>[]</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachArrayCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.filterArray">
+        filterArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>[]</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachArrayCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;T[], T[]></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.filterIterator"><span class="type-signature">(static) </span>filterIterator<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;Iterable&lt;T>, IterableIterator&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line135">line 135</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.filterIterator">
+        filterIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">IterableIterator</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.filterIterator">
+        filterIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">IterableIterator</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;Iterable&lt;T>, IterableIterator&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.filterObject"><span class="type-signature">(static) </span>filterObject<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line127">line 127</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.filterObject">
+        filterObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.filterObject">
+        filterObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, boolean></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.mapArray"><span class="type-signature">(static) </span>mapArray<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;T[], T[]>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line95">line 95</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachArrayCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.mapArray">
+        mapArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>[]</span>, <span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>[]</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachArrayCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.mapArray">
+        mapArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>[]</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachArrayCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;T[], T[]></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.mapIterator"><span class="type-signature">(static) </span>mapIterator<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;Iterable&lt;T>, IterableIterator&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line111">line 111</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.mapIterator">
+        mapIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">IterableIterator</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.mapIterator">
+        mapIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">IterableIterator</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachIteratorCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;Iterable&lt;T>, IterableIterator&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.mapObject"><span class="type-signature">(static) </span>mapObject<span class="signature">(a, b)</span><span class="type-signature"> &rarr; {Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line103">line 103</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.mapObject">
+        mapObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.mapObject">
+        mapObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T = <span class="ts-style ts-anykeyword">any</span></span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-anykeyword">any</span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">EachObjectCalllbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;T></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.reduceArray"><span class="type-signature">(static) </span>reduceArray<span class="signature">(a, b, c)</span><span class="type-signature"> &rarr; {Curry2&lt;U[], T, T>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceArrayCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">U[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceArray">
+        reduceArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry2</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-arraytype"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">U</span></span>[]</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceArrayCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceArray">
+        reduceArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceArrayCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">U[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceArray">
+        reduceArray<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b, c)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceArrayCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">U[]</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry2&lt;U[], T, T></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.reduceIterator"><span class="type-signature">(static) </span>reduceIterator<span class="signature">(a, b, c)</span><span class="type-signature"> &rarr; {Curry2&lt;Iterable&lt;U>, T, T>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line60">line 60</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceIterator">
+        reduceIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry2</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Iterable</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">U</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceIterator">
+        reduceIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceIterator">
+        reduceIterator<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b, c)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceIteratorCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Iterable&lt;U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry2&lt;Iterable&lt;U>, T, T></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".exports.reduceObject"><span class="type-signature">(static) </span>reduceObject<span class="signature">(a, b, c)</span><span class="type-signature"> &rarr; {Curry2&lt;ObjectInterface&lt;U>, T, T>|...}</span></h4>
+
+
+    
+
+
+
+
+<dl class="details">
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="currying.ts.html">currying.ts</a>, <a href="currying.ts.html#line50">line 50</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceObjectCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceObject">
+        reduceObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry2</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">ObjectInterface</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">U</span></span></span>&gt;</span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceObjectCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceObject">
+        reduceObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">Curry1</span>&lt;<span class="ts-style ts-typeparameterinstantiation"><span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>, <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceObjectCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+    
+    <h4 class="name typescript" id=".exports.reduceObject">
+        reduceObject<span class="ts-style ts-typeparameterdeclaration">&lt;<span class="ts-style ts-typeparameter">T</span>, <span class="ts-style ts-typeparameter">U = <span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span></span>&gt;</span>
+        <span class="signature">(a, b, c)</span>
+        <span class="type-signature"> → {<span class="ts-style ts-typereference"><span class="ts-style ts-identifier">T</span></span>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>a</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ReduceObjectCallbackType&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>b</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">ObjectInterface&lt;U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>c</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Curry2&lt;ObjectInterface&lt;U>, T, T></span>
+|
+
+<span class="param-type">...</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+
+<style>
+
+
+nav li[file="currying"]:after {
+    display: none;
+}
+nav li[file="currying"] h4, nav li[file="currying"] ul {
+    display: block;
+}
+</style>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 0.2.1</a> on Thu Dec 27 2018 00:01:09 GMT+0900 (Korean Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>

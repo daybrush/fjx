@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>currying.ts - Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
+    <link type="text/css" rel="stylesheet" href="styles/custom.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta name="description" content="currying.ts - Documentation"/>
+
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><ul class="namespaces"><li file="asyncfunctions"><a href="AsyncFunctions.html">AsyncFunctions</a><h4><a href="AsyncFunctions.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncArray">asyncArray</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncEachArrayF">asyncEachArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncEachIteratorF">asyncEachIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncEachObjectF">asyncEachObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncFilterArrayF">asyncFilterArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncFilterIteratorF">asyncFilterIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncFilterObjectF">asyncFilterObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncIterator">asyncIterator</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncMapArrayF">asyncMapArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncMapIteratorF">asyncMapIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncMapObjectF">asyncMapObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncObject">asyncObject</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncReduceArrayF">asyncReduceArrayF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncReduceIteratorF">asyncReduceIteratorF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.asyncReduceObjectF">asyncReduceObjectF</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.exec">exec</a></li><li data-type='method'><a href="AsyncFunctions.html#.exports.toArray">toArray</a></li></ul></li><li file="consts"><a href="Consts.html">Consts</a><h4><a href="Consts.html#static members">Static Members</a></h4><ul class='static members'><li data-type='member'><a href="Consts.html#.exports.IS_PROMISE">IS_PROMISE</a></li></ul></li><li file="currying"><a href="Currying.html">Currying</a><h4><a href="Currying.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="Currying.html#.exports.asyncMapIterator">asyncMapIterator</a></li><li data-type='method'><a href="Currying.html#.exports.asyncReduceIterator">asyncReduceIterator</a></li><li data-type='method'><a href="Currying.html#.exports.eachIterator">eachIterator</a></li><li data-type='method'><a href="Currying.html#.exports.eachObject">eachObject</a></li><li data-type='method'><a href="Currying.html#.exports.filterArray">filterArray</a></li><li data-type='method'><a href="Currying.html#.exports.filterIterator">filterIterator</a></li><li data-type='method'><a href="Currying.html#.exports.filterObject">filterObject</a></li><li data-type='method'><a href="Currying.html#.exports.mapArray">mapArray</a></li><li data-type='method'><a href="Currying.html#.exports.mapIterator">mapIterator</a></li><li data-type='method'><a href="Currying.html#.exports.mapObject">mapObject</a></li><li data-type='method'><a href="Currying.html#.exports.reduceArray">reduceArray</a></li><li data-type='method'><a href="Currying.html#.exports.reduceIterator">reduceIterator</a></li><li data-type='method'><a href="Currying.html#.exports.reduceObject">reduceObject</a></li></ul></li><li file="functions"><a href="Functions.html">Functions</a><h4><a href="Functions.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="Functions.html#.exports.eachArrayF">eachArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.eachIteratorF">eachIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.eachObjectF">eachObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.filterArrayF">filterArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.filterIteratorF">filterIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.filterObjectF">filterObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.head">head</a></li><li data-type='method'><a href="Functions.html#.exports.headArray">headArray</a></li><li data-type='method'><a href="Functions.html#.exports.mapArrayF">mapArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.mapIteratorF">mapIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.mapObjectF">mapObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.reduceArrayF">reduceArrayF</a></li><li data-type='method'><a href="Functions.html#.exports.reduceIteratorF">reduceIteratorF</a></li><li data-type='method'><a href="Functions.html#.exports.reduceObjectF">reduceObjectF</a></li><li data-type='method'><a href="Functions.html#.exports.tail">tail</a></li><li data-type='method'><a href="Functions.html#.exports.tailArray">tailArray</a></li></ul></li><li file="utils"><a href="utils.html">utils</a><h4><a href="utils.html#static methods">Static Methods</a></h4><ul class='static methods'><li data-type='method'><a href="utils.html#.exports.curry">curry</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">currying.ts</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  ObjectInterface,
+  ReduceIteratorCallbackType,
+  ReduceIteratorAsyncCallbackType,
+  Curry1,
+  Curry2,
+  EachArrayCalllbackType,
+  EachObjectCalllbackType,
+  EachIteratorCalllbackType,
+  EachAsyncIteratorCalllbackType,
+  ReduceArrayCallbackType,
+  ReduceObjectCallbackType,
+} from "./types";
+import { curry } from "./utils";
+import {
+  asyncReduceIteratorF, asyncMapIteratorF, asyncEachIteratorF
+} from "./async";
+import {
+  reduceIteratorF,
+  eachArrayF,
+  eachObjectF,
+  eachIteratorF,
+  mapArrayF,
+  mapObjectF,
+  mapIteratorF,
+  reduceArrayF,
+  reduceObjectF,
+  filterArrayF,
+  filterObjectF,
+  filterIteratorF
+} from "./function";
+/**
+ * @namespace Currying
+ */
+/**
+ * @memberof Currying
+ * @function
+ */
+// currying reduce
+export const reduceArray:
+  (&lt;T, U = T>(a: ReduceArrayCallbackType&lt;T, U>) => Curry2&lt;U[], T, T>) &amp;
+  (&lt;T, U = T>(a: ReduceArrayCallbackType&lt;T, U>, b: U[]) => Curry1&lt;T, T>) &amp;
+  (&lt;T, U = T>(a: ReduceArrayCallbackType&lt;T, U>, b: U[], c: T) => T) =
+  /*#__PURE__*/curry(reduceArrayF);
+
+/**
+ * @memberof Currying
+ * @function
+ */
+export const reduceObject:
+  (&lt;T, U = T>(a: ReduceObjectCallbackType&lt;T, U>) => Curry2&lt;ObjectInterface&lt;U>, T, T>) &amp;
+  (&lt;T, U = T>(a: ReduceObjectCallbackType&lt;T, U>, b: ObjectInterface&lt;U>) => Curry1&lt;T, T>) &amp;
+  (&lt;T, U = T>(a: ReduceObjectCallbackType&lt;T, U>, b: ObjectInterface&lt;U>, c: T) => T) =
+  /*#__PURE__*/curry(reduceObjectF);
+
+/**
+ * @memberof Currying
+ * @function
+ */
+export const reduceIterator:
+  (&lt;T, U = T>(a: ReduceIteratorCallbackType&lt;T, U>) => Curry2&lt;Iterable&lt;U>, T, T>) &amp;
+  (&lt;T, U = T>(a: ReduceIteratorCallbackType&lt;T, U>, b: Iterable&lt;U>) => Curry1&lt;T, T>) &amp;
+  (&lt;T, U = T>(a: ReduceIteratorCallbackType&lt;T, U>, b: Iterable&lt;U>, c: T) => T) =
+  /*#__PURE__*/curry(reduceIteratorF);
+
+// currying each
+/**
+ * @memberof Currying
+ * @function
+ */
+export const eachArray:
+  (&lt;T = any>(a: EachArrayCalllbackType&lt;T, void>) => Curry1&lt;T[], T[]>) &amp;
+  (&lt;T = any>(a: EachArrayCalllbackType&lt;T, void>, b: T[]) => T[]) =
+  /*#__PURE__*/curry(eachArrayF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const eachObject:
+  (&lt;T = any>(a: EachObjectCalllbackType&lt;T, void>) => Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>>) &amp;
+  (&lt;T = any>(a: EachObjectCalllbackType&lt;T, void>, b: ObjectInterface&lt;T>) => ObjectInterface&lt;T>) =
+  /*#__PURE__*/curry(eachObjectF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const eachIterator:
+  (&lt;T = any>(a: EachIteratorCalllbackType&lt;T, void>) => Curry1&lt;Iterable&lt;T>, Iterable&lt;T>>) &amp;
+  (&lt;T = any>(a: EachIteratorCalllbackType&lt;T, void>, b: Iterable&lt;T>) => Iterable&lt;T>) =
+  /*#__PURE__*/curry(eachIteratorF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const mapArray:
+ (&lt;T = any, U = any>(a: EachArrayCalllbackType&lt;T, U>) => Curry1&lt;T[], T[]>) &amp;
+ (&lt;T = any, U = any>(a: EachArrayCalllbackType&lt;T, U>, b: T[]) => T[]) =
+ /*#__PURE__*/curry(mapArrayF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const mapObject:
+ (&lt;T = any, U = any>(a: EachObjectCalllbackType&lt;T, U>) => Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>>) &amp;
+ (&lt;T = any, U = any>(a: EachObjectCalllbackType&lt;T, U>, b: ObjectInterface&lt;T>) => ObjectInterface&lt;T>) =
+ /*#__PURE__*/curry(mapObjectF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const mapIterator:
+ (&lt;T = any, U = any>(a: EachIteratorCalllbackType&lt;T, U>) => Curry1&lt;Iterable&lt;T>, IterableIterator&lt;T>>) &amp;
+ (&lt;T = any, U = any>(a: EachIteratorCalllbackType&lt;T, U>, b: Iterable&lt;T>) => IterableIterator&lt;T>) =
+ /*#__PURE__*/ curry(mapIteratorF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const filterArray:
+ (&lt;T = any>(a: EachArrayCalllbackType&lt;T, boolean>) => Curry1&lt;T[], T[]>) &amp;
+ (&lt;T = any>(a: EachArrayCalllbackType&lt;T, boolean>, b: T[]) => T[]) =
+ /*#__PURE__*/ curry(filterArrayF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const filterObject:
+ (&lt;T = any>(a: EachObjectCalllbackType&lt;T, boolean>) => Curry1&lt;ObjectInterface&lt;T>, ObjectInterface&lt;T>>) &amp;
+ (&lt;T = any>(a: EachObjectCalllbackType&lt;T, boolean>, b: ObjectInterface&lt;T>) => ObjectInterface&lt;T>) =
+ /*#__PURE__*/ curry(filterObjectF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const filterIterator:
+ (&lt;T = any>(a: EachIteratorCalllbackType&lt;T, boolean>) => Curry1&lt;Iterable&lt;T>, IterableIterator&lt;T>>) &amp;
+ (&lt;T = any>(a: EachIteratorCalllbackType&lt;T, boolean>, b: Iterable&lt;T>) => IterableIterator&lt;T>) =
+ /*#__PURE__*/ curry(filterIteratorF);
+
+// currying async each
+/**
+ * @memberof Currying
+ * @function
+ */
+export const asyncEachIterator:
+  (&lt;T = any>(a: EachAsyncIteratorCalllbackType&lt;T, void>) => Curry1&lt;Iterable&lt;T>, Promise&lt;Iterable&lt;T>>>) &amp;
+  (&lt;T = any>(a: EachAsyncIteratorCalllbackType&lt;T, void>, b: Iterable&lt;T>) => Promise&lt;Iterable&lt;T>>) =
+  /*#__PURE__*/ curry(asyncEachIteratorF);
+/**
+ * @memberof Currying
+ * @function
+ */
+export const asyncReduceIterator:
+ (&lt;T, U = T>(a: ReduceIteratorAsyncCallbackType&lt;T, U>, b: Iterable&lt;U | Promise&lt;U>>, c: T) => Promise&lt;T>) &amp;
+ (&lt;T, U = T>(a: ReduceIteratorAsyncCallbackType&lt;T, U>, b: Iterable&lt;U | Promise&lt;U>>) => Curry1&lt;T, Promise&lt;T>>) &amp;
+ (&lt;T, U = T>(a: ReduceIteratorAsyncCallbackType&lt;T, U>) => Curry2&lt;Iterable&lt;U | Promise&lt;U>>, T, Promise&lt;T>>) =
+  /*#__PURE__*/ curry(asyncReduceIteratorF);
+/**
+ * @memberof Currying
+ * @function
+ * @param {} callbackFn - Function that produces an element of the new Iterator.
+ * @param {} [iterator] - The iterator to call this function.
+ * @return {} HAHAH
+ * @example
+asyncMapIterator(v => console.log(v), [fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3]);
+
+// curry
+const func = asyncMapIterator(v => console.log(v));
+
+func([fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3])
+ */
+export const asyncMapIterator:
+  (&lt;T = any, U = any>(a: EachAsyncIteratorCalllbackType&lt;T, U>) => Curry1&lt;Iterable&lt;T>, AsyncIterableIterator&lt;T>>) &amp;
+  (&lt;T = any, U = any>(a: EachAsyncIteratorCalllbackType&lt;T, U>, b: Iterable&lt;T>) => AsyncIterableIterator&lt;T>) =
+  /*#__PURE__*/ curry(asyncMapIteratorF); // comments???
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+
+<style>
+
+
+nav li[file="currying"]:after {
+    display: none;
+}
+nav li[file="currying"] h4, nav li[file="currying"] ul {
+    display: block;
+}
+</style>
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 0.2.1</a> on Thu Dec 27 2018 00:01:09 GMT+0900 (Korean Standard Time) using the <a href="https://github.com/clenemt/docdash">docdash</a> theme.
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
