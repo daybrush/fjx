@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>types.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/custom.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="description" content="Home - Documentation"/>
+    <meta name="description" content="types.ts - Documentation"/>
 
 </head>
 <body>
@@ -31,100 +31,164 @@
 
 <div id="main">
     
+    <h1 class="page-title">types.ts</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+* @typedef
+*/
+export type Func&lt;A = any, B = any> = (a: A) => B;
+/**
+* @typedef
+*/
+export type CallbackType&lt;T = any> = (...args: any[]) => T;
+/**
+* @typedef
+*/
+export interface EventParamterInterface {
+  [name: string]: CallbackType | CallbackType[];
+}
+/**
+* @typedef
+*/
+export type EachArrayCalllbackType&lt;T, U = any> =
+   (value?: T, key?: number, iterator?: T[]) => U;
+/**
+* @typedef
+*/
+export type EachObjectCalllbackType&lt;T, U = any> =
+   (value?: T, key?: string, iterator?: ObjectInterface&lt;T>) => U;
 
+/**
+* @typedef
+*/
+export type EachIteratorCalllbackType&lt;T, U = any> = (value?: T, iterator?: Iterable&lt;T>) => U;
+/**
+* @typedef
+*/
+export type EachAsyncArrayCalllbackType&lt;T, U = any> =
+   (value?: T, key?: number, iterator?: Array&lt;T | Promise&lt;T>>) => U;
+/**
+* @typedef
+*/
+export type EachAsyncObjectCalllbackType&lt;T, U = any> =
+   (value?: T, key?: string, iterator?: ObjectInterface&lt;T | Promise&lt;T>>) => U;
+/**
+* @typedef
+*/
+export type EachAsyncIteratorCalllbackType&lt;T, U = any> = (value?: T, iterator?: Iterable&lt;T | Promise&lt;T>>) => U;
 
+/**
+* @typedef
+*/
+export type ReduceArrayCallbackType&lt;T, U = T> =
+  (previousValue?: T, currentValue?: U, currentIndex?: number, arr?: U[]) => T;
+/**
+* @typedef
+*/
+export type ReduceObjectCallbackType&lt;T, U = T> =
+  (previousValue?: T, currentValue?: U, currentIndex?: string, arr?: ObjectInterface&lt;U>) => T;
+/**
+* @typedef
+*/
+export type ReduceIteratorCallbackType&lt;T, U = T> =
+  (previousValue?: T, currentValue?: U, iterator?: Iterable&lt;U>) => T;
+/**
+* @typedef
+*/
+export type ReduceArrayAsyncCallbackType&lt;T, U = T> =
+  (previousValue?: T, currentValue?: U, currentIndex?: number, arr?: Array&lt;U | Promise&lt;U>>) => T | Promise&lt;T>;
+/**
+* @typedef
+*/
+export type ReduceObjectAsyncCallbackType&lt;T, U = T> =
+  (previousValue?: T, currentValue?: U, currentIndex?: string, arr?: ObjectInterface&lt;U | Promise&lt;U>>) => T | Promise&lt;T>;
+/**
+* @typedef
+*/
+export type ReduceIteratorAsyncCallbackType&lt;T, U = T> =
+  (previousValue?: T, currentValue?: U, iterator?: Iterable&lt;U | Promise&lt;U>>) => T | Promise&lt;T>;
 
+/**
+* @typedef
+*/
+export interface EachInterface&lt;T> {
+  each: (callbackFn: EachArrayCalllbackType&lt;T, void> | EachObjectCalllbackType&lt;T, void>) => this;
+}
+/**
+* @typedef
+*/
+export interface ForEachInterface&lt;T> {
+  forEach: (callbackFn: EachArrayCalllbackType&lt;T, void> | EachObjectCalllbackType&lt;T, void>) => this;
+}
+/**
+* @typedef
+*/
+export interface ObjectInterface&lt;T> {
+  [key: string]: T;
+}
+/**
+* @typedef
+*/
+export interface EventInterface {
+  on(name: string | EventParamterInterface, callback?: CallbackType | CallbackType[]): this;
+  once(name: string | EventParamterInterface, callback?: CallbackType | CallbackType[]): this;
+  off(name?: string, callback?: CallbackType): this;
+}
 
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>fjx  <a href="https://badge.fury.io/js/fjx"><img src="https://badge.fury.io/js/fjx.svg" alt="npm version"></a> <a href="https://travis-ci.org/daybrush/fjx"><img src="https://travis-ci.org/daybrush/fjx.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/daybrush/fjx?branch=master"><img src="https://coveralls.io/repos/github/daybrush/fjx/badge.svg?branch=master" alt="Coverage Status"></a></h1>
-<p>fjx is an functional javascript extension. Support Typescript</p>
-<p>Tree shaking is supported and only used functions are included.</p>
-<p><a href="http://daybrush.com/fjx/release/latest/doc"><strong>API Documents</strong></a></p>
-<h2>Functional Utils</h2>
-<ul>
-<li>curry (The type supports up to five arguments of the function.)</li>
-<li>pipe (The type supports up to five arguments of the function.)</li>
-<li>head</li>
-<li>tail</li>
-<li>headArray</li>
-<li>tailArray</li>
-<li>isIterable</li>
-<li>isIterator</li>
-</ul>
-<h2>Currying Functions (Support types)</h2>
-<ul>
-<li>eachArray</li>
-<li>eachObject</li>
-<li>eachIterator</li>
-<li>mapArray</li>
-<li>mapObject</li>
-<li>mapIterator</li>
-<li>filterArray</li>
-<li>filterObject</li>
-<li>filterIterator</li>
-<li>reduceArray</li>
-<li>reduceObject</li>
-<li>reduceIterator</li>
-<li>asyncEachArray</li>
-<li>asyncEachObject</li>
-<li>asyncEachIterator</li>
-<li>asyncMapArray</li>
-<li>asyncMapObject</li>
-<li>asyncMapIterator</li>
-<li>asyncFilterArray</li>
-<li>asyncFilterObject</li>
-<li>asyncFilterIterator</li>
-<li>asyncReduceArray</li>
-<li>asyncReduceObject</li>
-<li>asyncReduceIterator</li>
-</ul>
-<h2>Functions</h2>
-<ul>
-<li>eachArrayF</li>
-<li>eachObjectF</li>
-<li>eachIteratorF</li>
-<li>mapArrayF</li>
-<li>mapObjectF</li>
-<li>mapIteratorF</li>
-<li>filterArrayF</li>
-<li>filterObjectF</li>
-<li>filterIteratorF</li>
-<li>reduceArrayF</li>
-<li>reduceObjectF</li>
-<li>reduceIteratorF</li>
-</ul>
-<h2>Async Functions</h2>
-<ul>
-<li>asyncEachArrayF</li>
-<li>asyncEachObjectF</li>
-<li>asyncEachIteratorF</li>
-<li>asyncMapArrayF</li>
-<li>asyncMapObjectF</li>
-<li>asyncMapIteratorF</li>
-<li>asyncFilterArrayF</li>
-<li>asyncFilterObjectF</li>
-<li>asyncFilterIteratorF</li>
-<li>asyncReduceArrayF</li>
-<li>asyncReduceObjectF</li>
-<li>asyncReduceIteratorF</li>
-</ul></article>
+// Curry 4
+/**
+* @typedef
+*/
+export type Curry4CallbackType&lt;A, B, C, D, E> = (...args: [A, B, C, D]) => E;
+/**
+* @typedef
+*/
+export interface Curry4&lt;A, B, C, D, E> extends Curry4CallbackType&lt;A, B, C, D, E> {
+  (...args: [A, B, C]): Curry1&lt;D, E>;
+  (...args: [A, B]): Curry2&lt;C, D, E>;
+  (...args: [A]): Curry3&lt;B, C, D, E>;
+}
+// Curry 3
+/**
+* @typedef
+*/
+export type Curry3CallbackType&lt;A, B, C, D> = (a?: A, b?: B, c?: C) => D;
+/**
+* @typedef
+* @extends Curry3CallbackType
+*/
+export interface Curry3&lt;A, B, C, D> extends Curry3CallbackType&lt;A, B, C, D> {
+  (value: A, value2: B): Curry1&lt;C, D>;
+  (value: A): Curry2&lt;B, C, D>;
+}
+// Curry 2
+export type Curry2CallbackType&lt;A, B, C> = (a?: A, b?: B) => C;
+/**
+* @typedef
+*/
+export interface Curry2&lt;A = any, B = any, C = any> extends Curry2CallbackType&lt;A, B, C> {
+  (value: A): Curry1&lt;B, C>;
+}
+// Curry 1
+/**
+* @typedef
+*/
+export type Curry1&lt;A, B> = (value: A) => B;
+/**
+* @typedef
+*/
+export type Curry1CallbackType&lt;A, B> = (a?: A) => B;
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
@@ -132,18 +196,11 @@
 
 <style>
 
-nav>h2+ul li:first-child:after {
+
+nav li[file="types"]:after {
     display: none;
 }
-nav>h2+ul li:first-child h4, nav>h2+ul li:first-child ul {
-    display: block;
-}
-
-
-nav li[file="home"]:after {
-    display: none;
-}
-nav li[file="home"] h4, nav li[file="home"] ul {
+nav li[file="types"] h4, nav li[file="types"] ul {
     display: block;
 }
 </style>
