@@ -1,15 +1,16 @@
 /*
 Copyright (c) 2018 Daybrush
+@name: fjx
 license: MIT
 author: Daybrush
-repository: git+https://github.com/daybrush/fjx.git
+repository: https://github.com/daybrush/fjx.git
 @version 0.0.1-rc2
 */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-  typeof define === 'function' && define.amd ? define(['exports'], factory) :
-  (factory((global.fjx = {})));
-}(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global.fjx = factory());
+}(this, (function () { 'use strict';
 
   /*! *****************************************************************************
   Copyright (c) Microsoft Corporation. All rights reserved.
@@ -268,7 +269,6 @@ repository: git+https://github.com/daybrush/fjx.git
 
   /**
    * @memberof Functions
-   * @function
    */
 
   function reduceArrayF(callbackFn, initial, iterator) {
@@ -276,7 +276,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function reduceObjectF(callbackFn, initial, iterator) {
@@ -290,7 +289,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function reduceIteratorF(callbackFn, initial, iterator) {
@@ -320,7 +318,6 @@ repository: git+https://github.com/daybrush/fjx.git
 
   /**
    * @memberof Functions
-   * @function
    * @returns {} The calling array itself
    */
 
@@ -330,7 +327,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    * @returns {} The calling object itself
    */
 
@@ -343,7 +339,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
   * @returns {} The calling iterator itself
    */
 
@@ -371,8 +366,7 @@ repository: git+https://github.com/daybrush/fjx.git
   } // map
 
   /**
-   * @memberof Functions
-   * @function
+   * @memberof FunctionS
    */
 
   function mapArrayF(f, iterator) {
@@ -380,7 +374,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function mapObjectF(f, iterator) {
@@ -394,7 +387,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function mapIteratorF(f, iterator) {
@@ -463,7 +455,6 @@ repository: git+https://github.com/daybrush/fjx.git
 
   /**
    * @memberof Functions
-   * @function
    */
 
   function filterArrayF(f, iterator) {
@@ -471,7 +462,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function filterObjectF(f, iterator) {
@@ -485,7 +475,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function filterIteratorF(f, iterator) {
@@ -559,7 +548,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function headArray(iterator) {
@@ -567,7 +555,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function tailArray(iterator) {
@@ -575,7 +562,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function head(iterator) {
@@ -600,7 +586,6 @@ repository: git+https://github.com/daybrush/fjx.git
   }
   /**
    * @memberof Functions
-   * @function
    */
 
   function tail(iterator) {
@@ -804,18 +789,29 @@ repository: git+https://github.com/daybrush/fjx.git
    * @namespace utils
    */
 
+  /**
+   * @memberof utils
+   */
+
   function isPromise(value) {
     return IS_PROMISE && value instanceof Promise;
   }
+  /**
+   * @memberof utils
+   */
+
   function isIterable(iter) {
     return IS_SYMBOL && !!(iter && (iter[Symbol.iterator] || iter[Symbol.asyncIterator]));
   }
+  /**
+   * @memberof utils
+   */
+
   function isIterator(iter) {
     return iter && isFunction(iter.next);
   }
   /**
    * @memberof utils
-   * @function
    */
 
   function curry(f) {
@@ -848,6 +844,10 @@ repository: git+https://github.com/daybrush/fjx.git
       }, a, args);
     };
   }
+  /**
+   * @memberof utils
+   */
+
   function pipe() {
     var args = [];
 
@@ -857,6 +857,10 @@ repository: git+https://github.com/daybrush/fjx.git
 
     return _pipe(args);
   }
+  /**
+   * @memberof utils
+   */
+
   function compose() {
     var args = [];
 
@@ -1538,63 +1542,69 @@ repository: git+https://github.com/daybrush/fjx.git
 
   var asyncMapIterator =
   /*#__PURE__*/
-  curry(asyncMapIteratorF); // comments???
+  curry(asyncMapIteratorF);
 
-  exports.reduceArray = reduceArray;
-  exports.reduceObject = reduceObject;
-  exports.reduceIterator = reduceIterator;
-  exports.eachArray = eachArray;
-  exports.eachObject = eachObject;
-  exports.eachIterator = eachIterator;
-  exports.mapArray = mapArray;
-  exports.mapObject = mapObject;
-  exports.mapIterator = mapIterator;
-  exports.filterArray = filterArray;
-  exports.filterObject = filterObject;
-  exports.filterIterator = filterIterator;
-  exports.asyncEachIterator = asyncEachIterator;
-  exports.asyncReduceIterator = asyncReduceIterator;
-  exports.asyncMapIterator = asyncMapIterator;
-  exports.reduceArrayF = reduceArrayF;
-  exports.reduceObjectF = reduceObjectF;
-  exports.reduceIteratorF = reduceIteratorF;
-  exports.eachArrayF = eachArrayF;
-  exports.eachObjectF = eachObjectF;
-  exports.eachIteratorF = eachIteratorF;
-  exports.mapArrayF = mapArrayF;
-  exports.mapObjectF = mapObjectF;
-  exports.mapIteratorF = mapIteratorF;
-  exports.filterArrayF = filterArrayF;
-  exports.filterObjectF = filterObjectF;
-  exports.filterIteratorF = filterIteratorF;
-  exports.headArray = headArray;
-  exports.tailArray = tailArray;
-  exports.head = head;
-  exports.tail = tail;
-  exports.exec = exec;
-  exports.asyncArray = asyncArray;
-  exports.asyncObject = asyncObject;
-  exports.toArray = toArray;
-  exports.asyncIterator = asyncIterator;
-  exports.asyncReduceArrayF = asyncReduceArrayF;
-  exports.asyncReduceObjectF = asyncReduceObjectF;
-  exports.asyncReduceIteratorF = asyncReduceIteratorF;
-  exports.asyncEachArrayF = asyncEachArrayF;
-  exports.asyncEachObjectF = asyncEachObjectF;
-  exports.asyncEachIteratorF = asyncEachIteratorF;
-  exports.asyncMapArrayF = asyncMapArrayF;
-  exports.asyncMapObjectF = asyncMapObjectF;
-  exports.asyncMapIteratorF = asyncMapIteratorF;
-  exports.asyncFilterArrayF = asyncFilterArrayF;
-  exports.asyncFilterObjectF = asyncFilterObjectF;
-  exports.asyncFilterIteratorF = asyncFilterIteratorF;
-  exports.isPromise = isPromise;
-  exports.isIterable = isIterable;
-  exports.isIterator = isIterator;
-  exports.curry = curry;
-  exports._pipe = _pipe;
-  exports.pipe = pipe;
-  exports.compose = compose;
+
+
+  var fjx = ({
+    reduceArray: reduceArray,
+    reduceObject: reduceObject,
+    reduceIterator: reduceIterator,
+    eachArray: eachArray,
+    eachObject: eachObject,
+    eachIterator: eachIterator,
+    mapArray: mapArray,
+    mapObject: mapObject,
+    mapIterator: mapIterator,
+    filterArray: filterArray,
+    filterObject: filterObject,
+    filterIterator: filterIterator,
+    asyncEachIterator: asyncEachIterator,
+    asyncReduceIterator: asyncReduceIterator,
+    asyncMapIterator: asyncMapIterator,
+    reduceArrayF: reduceArrayF,
+    reduceObjectF: reduceObjectF,
+    reduceIteratorF: reduceIteratorF,
+    eachArrayF: eachArrayF,
+    eachObjectF: eachObjectF,
+    eachIteratorF: eachIteratorF,
+    mapArrayF: mapArrayF,
+    mapObjectF: mapObjectF,
+    mapIteratorF: mapIteratorF,
+    filterArrayF: filterArrayF,
+    filterObjectF: filterObjectF,
+    filterIteratorF: filterIteratorF,
+    headArray: headArray,
+    tailArray: tailArray,
+    head: head,
+    tail: tail,
+    exec: exec,
+    asyncArray: asyncArray,
+    asyncObject: asyncObject,
+    toArray: toArray,
+    asyncIterator: asyncIterator,
+    asyncReduceArrayF: asyncReduceArrayF,
+    asyncReduceObjectF: asyncReduceObjectF,
+    asyncReduceIteratorF: asyncReduceIteratorF,
+    asyncEachArrayF: asyncEachArrayF,
+    asyncEachObjectF: asyncEachObjectF,
+    asyncEachIteratorF: asyncEachIteratorF,
+    asyncMapArrayF: asyncMapArrayF,
+    asyncMapObjectF: asyncMapObjectF,
+    asyncMapIteratorF: asyncMapIteratorF,
+    asyncFilterArrayF: asyncFilterArrayF,
+    asyncFilterObjectF: asyncFilterObjectF,
+    asyncFilterIteratorF: asyncFilterIteratorF,
+    isPromise: isPromise,
+    isIterable: isIterable,
+    isIterator: isIterator,
+    curry: curry,
+    _pipe: _pipe,
+    pipe: pipe,
+    compose: compose
+  });
+
+  return fjx;
 
 })));
 //# sourceMappingURL=fjx.js.map
