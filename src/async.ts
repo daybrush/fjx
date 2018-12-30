@@ -2,13 +2,13 @@ import { isPromise } from "./utils";
 import {
   ReduceIteratorAsyncCallbackType,
   ReduceArrayAsyncCallbackType,
-  ObjectInterface,
   ReduceObjectAsyncCallbackType,
   EachAsyncArrayCalllbackType,
   EachAsyncObjectCalllbackType,
   EachAsyncIteratorCalllbackType,
 } from "./types";
 import { reduceIteratorF, reduceArrayF, reduceObjectF } from "./function";
+import { ObjectInterface } from "@daybrush/utils";
 /**
  * @namespace AsyncFunctions
  */

@@ -1,5 +1,4 @@
 import {
-  ObjectInterface,
   ReduceIteratorCallbackType,
   ReduceIteratorAsyncCallbackType,
   Curry1,
@@ -29,8 +28,10 @@ import {
   filterObjectF,
   filterIteratorF
 } from "./function";
+import { ObjectInterface } from "@daybrush/utils";
 /**
  * @namespace Currying
+ * @sort 1
  */
 /**
  * @memberof Currying
@@ -171,4 +172,4 @@ func([fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3])
 export const asyncMapIterator:
   (<T = any, U = any>(a: EachAsyncIteratorCalllbackType<T, U>) => Curry1<Iterable<T>, AsyncIterableIterator<T>>) &
   (<T = any, U = any>(a: EachAsyncIteratorCalllbackType<T, U>, b: Iterable<T>) => AsyncIterableIterator<T>) =
-  /*#__PURE__*/ curry(asyncMapIteratorF); // comments???
+  /*#__PURE__*/ curry(asyncMapIteratorF);

@@ -25,7 +25,7 @@ const uglifyCode = uglify({
       var type = comment.type;
       if (type === "comment2") {
         // multiline comment
-        return /@version/.test(text);
+        return /@name\:\sfjx/.test(text);
       }
     },
   },
@@ -63,26 +63,26 @@ export default [
     treeshake: {
       pureExternalModules: true,
     },
-    input: 'src/index.ts',
+    input: 'src/index.umd.ts',
     plugins: [...plugins, resolvePlugin, ],
     output: {
       ...output,
       format: "umd",
       name: "fjx",
-      exports: "named",
+      exports: "default",
       file: `./dist/fjx.js`,
     },
   }, {
     treeshake: {
       pureExternalModules: true,
     },
-    input: 'src/index.ts',
+    input: 'src/index.umd.ts',
     plugins: [...plugins, resolvePlugin, uglifyCode],
     output: {
       ...output,
       format: "umd",
       name: "fjx",
-      exports: "named",
+      exports: "default",
       file: `./dist/fjx.min.js`,
     },
   }

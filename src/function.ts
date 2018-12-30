@@ -2,11 +2,11 @@ import {
   ReduceIteratorCallbackType,
   ReduceArrayCallbackType,
   ReduceObjectCallbackType,
-  ObjectInterface,
   EachArrayCalllbackType,
   EachObjectCalllbackType,
   EachIteratorCalllbackType,
 } from "./types";
+import { ObjectInterface } from "@daybrush/utils";
 
 // reduce
 /**
@@ -14,7 +14,6 @@ import {
  */
 /**
  * @memberof Functions
- * @function
  */
 export function reduceArrayF<T, U = T>(
   callbackFn: ReduceArrayCallbackType<T, U>,
@@ -24,7 +23,6 @@ export function reduceArrayF<T, U = T>(
 }
 /**
  * @memberof Functions
- * @function
  */
 export function reduceObjectF<T, U = T>(
   callbackFn: ReduceObjectCallbackType<T, U>,
@@ -39,7 +37,6 @@ export function reduceObjectF<T, U = T>(
 }
 /**
  * @memberof Functions
- * @function
  */
 export function reduceIteratorF<T, U = T>(
   callbackFn: ReduceIteratorCallbackType<T, U>,
@@ -56,7 +53,6 @@ export function reduceIteratorF<T, U = T>(
 // each
 /**
  * @memberof Functions
- * @function
  * @returns {} The calling array itself
  */
 export function eachArrayF<T = any>(f: EachArrayCalllbackType<T, void>, iterator: T[]): T[] {
@@ -65,7 +61,6 @@ export function eachArrayF<T = any>(f: EachArrayCalllbackType<T, void>, iterator
 }
 /**
  * @memberof Functions
- * @function
  * @returns {} The calling object itself
  */
 export function eachObjectF<T = any>(f: EachObjectCalllbackType<T, void>, iterator: ObjectInterface<T>):
@@ -77,7 +72,6 @@ export function eachObjectF<T = any>(f: EachObjectCalllbackType<T, void>, iterat
 }
 /**
  * @memberof Functions
- * @function
 * @returns {} The calling iterator itself
  */
 export function eachIteratorF<T = any>(f: EachIteratorCalllbackType<T, void>, iterator: Iterable<T>): Iterable<T> {
@@ -89,15 +83,13 @@ export function eachIteratorF<T = any>(f: EachIteratorCalllbackType<T, void>, it
 
 // map
 /**
- * @memberof Functions
- * @function
+ * @memberof FunctionS
  */
 export function mapArrayF<T = any, U = any>(f: EachArrayCalllbackType<T, U>, iterator: T[]): U[] {
   return iterator.map<U>(f);
 }
 /**
  * @memberof Functions
- * @function
  */
 export function mapObjectF<T = any, U = any>(f: EachObjectCalllbackType<T, U>, iterator: ObjectInterface<T>):
   ObjectInterface<U> {
@@ -110,7 +102,6 @@ export function mapObjectF<T = any, U = any>(f: EachObjectCalllbackType<T, U>, i
 }
 /**
  * @memberof Functions
- * @function
  */
 export function* mapIteratorF<T = any, U = any>(f: EachIteratorCalllbackType<T, U>, iterator: Iterable<T>) {
   for (const value of iterator) {
@@ -121,14 +112,12 @@ export function* mapIteratorF<T = any, U = any>(f: EachIteratorCalllbackType<T, 
 // filter
 /**
  * @memberof Functions
- * @function
  */
 export function filterArrayF<T = any>(f: EachArrayCalllbackType<T, boolean>, iterator: T[]): T[] {
   return iterator.filter(f);
 }
 /**
  * @memberof Functions
- * @function
  */
 export function filterObjectF<T = any>(f: EachObjectCalllbackType<T, boolean>, iterator: ObjectInterface<T>):
   ObjectInterface<T> {
@@ -141,7 +130,6 @@ export function filterObjectF<T = any>(f: EachObjectCalllbackType<T, boolean>, i
 }
 /**
  * @memberof Functions
- * @function
  */
 export function* filterIteratorF<T = any>(f: EachIteratorCalllbackType<T, boolean>, iterator: Iterable<T>):
   IterableIterator<T> {
@@ -151,21 +139,18 @@ export function* filterIteratorF<T = any>(f: EachIteratorCalllbackType<T, boolea
 }
 /**
  * @memberof Functions
- * @function
  */
 export function headArray<T>(iterator: T[]): T {
   return iterator[0];
 }
 /**
  * @memberof Functions
- * @function
  */
 export function tailArray<T>(iterator: T[]): T {
   return iterator[iterator.length - 1];
 }
 /**
  * @memberof Functions
- * @function
  */
 export function head<T>(iterator: Iterable<T> | AsyncIterable<T>): T {
   for (const value of iterator) {
@@ -174,7 +159,6 @@ export function head<T>(iterator: Iterable<T> | AsyncIterable<T>): T {
 }
 /**
  * @memberof Functions
- * @function
  */
 export function tail<T>(iterator: Iterable<T>): T {
   return reduceIteratorF<T>(prev => prev, void 0, iterator);

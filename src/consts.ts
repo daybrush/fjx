@@ -5,7 +5,8 @@
 /**
 * @memberof Consts
 */
-export const IS_SYMBOL: boolean = typeof Symbol !== "undefined";
+export const IS_SYMBOL = typeof Symbol !== "undefined";
+
 /**
 * @memberof Consts
 */

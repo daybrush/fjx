@@ -1,3 +1,5 @@
+import { ObjectInterface } from "@daybrush/utils";
+
 /**
 * @typedef
 */
@@ -85,12 +87,7 @@ export interface EachInterface<T> {
 export interface ForEachInterface<T> {
   forEach: (callbackFn: EachArrayCalllbackType<T, void> | EachObjectCalllbackType<T, void>) => this;
 }
-/**
-* @typedef
-*/
-export interface ObjectInterface<T> {
-  [key: string]: T;
-}
+
 /**
 * @typedef
 */
