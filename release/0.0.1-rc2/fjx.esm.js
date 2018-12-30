@@ -1214,6 +1214,7 @@ function asyncFilterIteratorF(f, iterator) {
 
 /**
  * @namespace Currying
+ * @sort 1
  */
 
 /**

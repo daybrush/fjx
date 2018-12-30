@@ -1409,6 +1409,7 @@ repository: https://github.com/daybrush/fjx.git
 
   /**
    * @namespace Currying
+   * @sort 1
    */
 
   /**
