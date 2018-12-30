@@ -46,9 +46,8 @@ export function curry(f: CallbackType): any {
     return f;
   }
   function nest(i: number, args: any[]) {
-    f(...args);
     return (...args2: any[]) => {
-      const length2 = length - args2.length;
+      const length2 = i - args2.length;
 
       return length2 <= 0 ? f(...args, ...args2) : nest(length2, args.concat(args2));
     };

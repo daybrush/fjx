@@ -1,6 +1,6 @@
 {
   "name": "fjx",
-  "version": "0.0.1-rc2",
+  "version": "0.0.1-rc3",
   "description": "functional javascript extension",
   "main": "dist/fjx.js",
   "module": "dist/fjx.esm.js",
