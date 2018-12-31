@@ -161,5 +161,5 @@ export function head<T>(iterator: Iterable<T> | AsyncIterable<T>): T {
  * @memberof Functions
  */
 export function tail<T>(iterator: Iterable<T>): T {
-  return reduceIteratorF<T>(prev => prev, void 0, iterator);
+  return reduceIteratorF<T>((_, cur) => cur, void 0, iterator);
 }

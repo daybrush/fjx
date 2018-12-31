@@ -45,7 +45,7 @@
     "daybrush-jsdoc-template": "^1.4.2",
     "gh-pages": "^2.0.1",
     "jest": "^23.6.0",
-    "print-coveralls": "^1.2.1",
+    "print-coveralls": "^1.2.2",
     "print-sizes": "0.0.3",
     "rollup": "^0.67.4",
     "rollup-plugin-es3": "^1.1.0",
