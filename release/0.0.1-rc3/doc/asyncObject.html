@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>utils - Documentation</title>
+    <title>asyncObject - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/custom.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="description" content="utils - Documentation"/>
+    <meta name="description" content="asyncObject - Documentation"/>
 
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils</h1>
+    <h1 class="page-title">asyncObject</h1>
     
 
     
@@ -44,7 +44,7 @@
 <header>
     
         <h2>
-        utils
+        asyncObject
         </h2>
         
     
@@ -60,7 +60,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line12">line 12</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -124,7 +124,7 @@
 
     
 
-    <h4 class="name" id=".compose"><span class="type-signature">(static) </span>compose<span class="signature">(...args)</span><span class="type-signature"> &rarr; {<a href="global.html#Func">Func</a>}</span></h4>
+    <h4 class="name" id=".eachAsyncObjectF"><span class="type-signature">(static) </span>eachAsyncObjectF&lt;T extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(callbackFn, obj)</span><span class="type-signature"> &rarr; {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>>}</span></h4>
 
     
 
@@ -136,7 +136,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line93">line 93</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -207,13 +207,36 @@
 
         <tr>
             
-                <td class="name"><code>...args</code></td>
+                <td class="name"><code>callbackFn</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Func">Func</a>[]</span>
+<span class="param-type"><a href="asyncObject.html#.EachAsyncObjectCallbackType">EachAsyncObjectCallbackType</a>&lt;T, void></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
 
 
             
@@ -233,9 +256,9 @@
 
 
 
-    <h4 class="name typescript" id=".compose">
-        compose&lt;A, B, C, D, E&gt;<span class="signature">(a, b, c, d)</span>
-        <span class="type-signature"> → {<a href="global.html#Func">Func</a>&lt;A, E>}</span>
+    <h4 class="name typescript" id=".eachAsyncObjectF">
+        eachAsyncObjectF&lt;T extends ObjectInterface&lt;any&gt;, U&gt;<span class="signature">(callbackFn, obj)</span>
+        <span class="type-signature"> → {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>>}</span>
     </h4>
     <div class="ts-params typescript">
     
@@ -262,13 +285,13 @@
 
         <tr>
             
-                <td class="name"><code>a</code></td>
+                <td class="name"><code>callbackFn</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;D, E></span>
+<span class="param-type"><a href="asyncObject.html#.EachAsyncObjectCallbackType">EachAsyncObjectCallbackType</a>&lt;T, void></span>
 
 
             
@@ -285,236 +308,13 @@
 
         <tr>
             
-                <td class="name"><code>b</code></td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;C, D></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>c</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;A, B></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".compose">
-        compose&lt;A, B, C, D&gt;<span class="signature">(a, b, c)</span>
-        <span class="type-signature"> → {<a href="global.html#Func">Func</a>&lt;A, D>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;C, D></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>b</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>c</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;A, B></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".compose">
-        compose&lt;A, B, C&gt;<span class="signature">(a, b)</span>
-        <span class="type-signature"> → {<a href="global.html#Func">Func</a>&lt;A, C>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>b</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;A, B></span>
+<span class="param-type">T</span>
 
 
             
@@ -559,7 +359,7 @@
     </dt>
     <dd>
         
-<span class="param-type"><a href="global.html#Func">Func</a></span>
+<span class="param-type"><a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>></span>
 
 
     </dd>
@@ -573,7 +373,7 @@
 
     
 
-    <h4 class="name" id=".curry"><span class="type-signature">(static) </span>curry<span class="signature">(f)</span><span class="type-signature"> &rarr; {any}</span></h4>
+    <h4 class="name" id=".filterAsyncObjectF"><span class="type-signature">(static) </span>filterAsyncObjectF&lt;T extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(callbackFn, obj)</span><span class="type-signature"> &rarr; {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>>}</span></h4>
 
     
 
@@ -585,7 +385,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line54">line 54</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line102">line 102</a>
     </li></ul></dd>
     
 
@@ -656,16 +456,36 @@
 
         <tr>
             
-                <td class="name"><code>f</code></td>
+                <td class="name"><code>callbackFn</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="event.html#.CallbackType">CallbackType</a></span>
-|
+<span class="param-type"><a href="asyncObject.html#.EachAsyncObjectCallbackType">EachAsyncObjectCallbackType</a>&lt;T, boolean></span>
 
-<span class="param-type">...</span>
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
 
 
             
@@ -685,9 +505,9 @@
 
 
 
-    <h4 class="name typescript" id=".curry">
-        curry&lt;A&gt;<span class="signature">(f)</span>
-        <span class="type-signature"> → {() => A}</span>
+    <h4 class="name typescript" id=".filterAsyncObjectF">
+        filterAsyncObjectF&lt;T extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(callbackFn, obj)</span>
+        <span class="type-signature"> → {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>>}</span>
     </h4>
     <div class="ts-params typescript">
     
@@ -714,13 +534,13 @@
 
         <tr>
             
-                <td class="name"><code>f</code></td>
+                <td class="name"><code>callbackFn</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">() => A</span>
+<span class="param-type"><a href="asyncObject.html#.EachAsyncObjectCallbackType">EachAsyncObjectCallbackType</a>&lt;T, boolean></span>
 
 
             
@@ -734,209 +554,16 @@
         </tr>
 
     
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".curry">
-        curry&lt;A, B&gt;<span class="signature">(f)</span>
-        <span class="type-signature"> → {<a href="global.html#Curry1">Curry1</a>&lt;A, B>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
 
         <tr>
             
-                <td class="name"><code>f</code></td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Curry1CallbackType">Curry1CallbackType</a>&lt;A, B></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".curry">
-        curry&lt;A, B, C&gt;<span class="signature">(f)</span>
-        <span class="type-signature"> → {<a href="global.html#Curry2">Curry2</a>&lt;A, B, C>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Curry2CallbackType&lt;A, B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".curry">
-        curry&lt;A, B, C, D&gt;<span class="signature">(f)</span>
-        <span class="type-signature"> → {<a href="global.html#Curry3">Curry3</a>&lt;A, B, C, D>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Curry3CallbackType">Curry3CallbackType</a>&lt;A, B, C, D></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".curry">
-        curry&lt;A, B, C, D, E&gt;<span class="signature">(f)</span>
-        <span class="type-signature"> → {<a href="global.html#Curry4">Curry4</a>&lt;A, B, C, D, E>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Curry4CallbackType">Curry4CallbackType</a>&lt;A, B, C, D, E></span>
+<span class="param-type">T</span>
 
 
             
@@ -981,7 +608,7 @@
     </dt>
     <dd>
         
-<span class="param-type">any</span>
+<span class="param-type"><a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>></span>
 
 
     </dd>
@@ -995,7 +622,7 @@
 
     
 
-    <h4 class="name" id=".exec"><span class="type-signature">(static) </span>exec&lt;T, U = T&gt;<span class="signature">(f, v)</span><span class="type-signature"> &rarr; {Promise&lt;U>|...}</span></h4>
+    <h4 class="name" id=".mapAsyncObjectF"><span class="type-signature">(static) </span>mapAsyncObjectF&lt;T extends ObjectInterface&lt;any&gt;, U&gt;<span class="signature">(callbackFn, obj)</span><span class="type-signature"> &rarr; {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, U[]>}</span></h4>
 
     
 
@@ -1007,7 +634,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line42">line 42</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line91">line 91</a>
     </li></ul></dd>
     
 
@@ -1078,13 +705,13 @@
 
         <tr>
             
-                <td class="name"><code>f</code></td>
+                <td class="name"><code>callbackFn</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">(pv: T) => U</span>
+<span class="param-type"><a href="asyncObject.html#.EachAsyncObjectCallbackType">EachAsyncObjectCallbackType</a>&lt;T, U></span>
 
 
             
@@ -1101,296 +728,431 @@
 
         <tr>
             
-                <td class="name"><code>v</code></td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
             
                 
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+    <h4 class="name typescript" id=".mapAsyncObjectF">
+        mapAsyncObjectF&lt;T extends ObjectInterface&lt;any&gt;, U&gt;<span class="signature">(callbackFn, obj)</span>
+        <span class="type-signature"> → {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, U[]>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="asyncObject.html#.EachAsyncObjectCallbackType">EachAsyncObjectCallbackType</a>&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type"><a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, U[]></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+        
+            
+
+    
+
+    <h4 class="name" id=".reduceAsyncObjectF"><span class="type-signature">(static) </span>reduceAsyncObjectF&lt;T, U extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(callbackFn, initial, obj)</span><span class="type-signature"> &rarr; {T | Promise&lt;T>}</span></h4>
+
+    
+
+
+
+
+<dl class="details">
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="asyncObject.html#.ReduceAsyncObjectCallbackType">ReduceAsyncObjectCallbackType</a>&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initial</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">U</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+    <h4 class="name typescript" id=".reduceAsyncObjectF">
+        reduceAsyncObjectF&lt;T, U extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(callbackFn, initial, iterator)</span>
+        <span class="type-signature"> → {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;U, T>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>callbackFn</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type"><a href="asyncObject.html#.ReduceAsyncObjectCallbackType">ReduceAsyncObjectCallbackType</a>&lt;T, U></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>initial</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>iterator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">U</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl class="param-type">
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
 <span class="param-type">T | Promise&lt;T></span>
-|
-
-<span class="param-type">...</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-    <h4 class="name typescript" id=".exec">
-        exec&lt;T, U = T&gt;<span class="signature">(f, v)</span>
-        <span class="type-signature"> → {Promise&lt;U>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">(pv: T) => U</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Promise&lt;T></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".exec">
-        exec&lt;T, U = T&gt;<span class="signature">(f, v)</span>
-        <span class="type-signature"> → {U}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">(pv: T) => U</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">NoPromise&lt;T></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".exec">
-        exec&lt;T, U = T&gt;<span class="signature">(f, v)</span>
-        <span class="type-signature"> → {Promise&lt;U> | U}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>f</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">(pv: T) => U</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>v</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Promise&lt;T> | T</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">Promise&lt;U></span>
-|
-
-<span class="param-type">...</span>
 
 
     </dd>
@@ -1404,7 +1166,7 @@
 
     
 
-    <h4 class="name" id=".isIterable"><span class="type-signature">(static) </span>isIterable&lt;T = any&gt;<span class="signature">(iter)</span><span class="type-signature"> &rarr; {iter is Iterable&lt;T> | AsyncIterable&lt;T>}</span></h4>
+    <h4 class="name" id=".syncObject"><span class="type-signature">(static) </span>syncObject&lt;T extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(obj)</span><span class="type-signature"> &rarr; {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>>}</span></h4>
 
     
 
@@ -1416,7 +1178,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line25">line 25</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -1487,13 +1249,13 @@
 
         <tr>
             
-                <td class="name"><code>iter</code></td>
+                <td class="name"><code>obj</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">any</span>
+<span class="param-type">T</span>
 
 
             
@@ -1513,6 +1275,78 @@
 
 
 
+    <h4 class="name typescript" id=".syncObject">
+        syncObject&lt;T extends ObjectInterface&lt;any&gt;&gt;<span class="signature">(obj)</span>
+        <span class="type-signature"> → {<a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>>}</span>
+    </h4>
+    <div class="ts-params typescript">
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>obj</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">T</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    </div>
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// {a: 1, b: 2, c: 3 , d: 4}
+const obj1: ObjectInterface&lt;number> = syncObject({
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+});
+// Promise => {a: 1, b: 2, c: 3 , d: 4}
+const obj2: Promise&lt;ObjectInterface&lt;number>> = syncObject({
+    a: 1,
+    b: Promise.resolve(2),
+    c: 3,
+    d: 4,
+});</code></pre>
 
 
 
@@ -1539,7 +1373,7 @@
     </dt>
     <dd>
         
-<span class="param-type">iter is Iterable&lt;T> | AsyncIterable&lt;T></span>
+<span class="param-type"><a href="asyncObject.html#.AsyncObjectReturnType">AsyncObjectReturnType</a>&lt;T, <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;CheckPromiseObjectType&lt;T>>></span>
 
 
     </dd>
@@ -1549,13 +1383,15 @@
 
 
         
-            
-
     
 
-    <h4 class="name" id=".isIterator"><span class="type-signature">(static) </span>isIterator&lt;T = any&gt;<span class="signature">(iter)</span><span class="type-signature"> &rarr; {iter is Iterator&lt;T>}</span></h4>
-
     
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+<h4 class="name" id=".AsyncObjectReturnType">AsyncObjectReturnType&lt;T extends ObjectInterface&lt;any&gt;, U&gt;</h4>
+
 
 
 
@@ -1565,7 +1401,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line31">line 31</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -1606,105 +1442,25 @@
 
 
 
-
-
-
-
-
-
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-                <td class="name"><code>iter</code></td>
-            
+<span class="param-type">CheckPromiseReturnType&lt;CheckObjectType&lt;T>, U></span>
 
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
+
+        </li>
+    </ul>
+
+
+
+
 
 
             
-            </td>
+                
+<h4 class="name" id=".EachAsyncObjectCallbackType">EachAsyncObjectCallbackType&lt;T extends ObjectInterface&lt;any&gt;, U&gt;</h4>
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">iter is Iterator&lt;T></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".isPromise"><span class="type-signature">(static) </span>isPromise&lt;T = any&gt;<span class="signature">(value)</span><span class="type-signature"> &rarr; {value is Promise&lt;any>}</span></h4>
-
-    
 
 
 
@@ -1714,7 +1470,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line19">line 19</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line22">line 22</a>
     </li></ul></dd>
     
 
@@ -1755,105 +1511,25 @@
 
 
 
-
-
-
-
-
-
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-                <td class="name"><code>value</code></td>
-            
+<span class="param-type"><a href="object.html#.EachObjectCallbackType">EachObjectCallbackType</a>&lt;CheckPromiseObjectType&lt;T>, U></span>
 
-            <td class="type">
-            
-                
-<span class="param-type">any</span>
+
+        </li>
+    </ul>
+
+
+
+
 
 
             
-            </td>
+                
+<h4 class="name" id=".ReduceAsyncObjectCallbackType">ReduceAsyncObjectCallbackType&lt;T, U extends ObjectInterface&lt;any&gt;&gt;</h4>
 
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">value is Promise&lt;any></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-            
-
-    
-
-    <h4 class="name" id=".pipe"><span class="type-signature">(static) </span>pipe<span class="signature">(...args)</span><span class="type-signature"> &rarr; {<a href="global.html#Func">Func</a>}</span></h4>
-
-    
 
 
 
@@ -1863,7 +1539,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="utils.ts.html">utils.ts</a>, <a href="utils.ts.html#line83">line 83</a>
+        <a href="object_asyncObject.ts.html">object/asyncObject.ts</a>, <a href="object_asyncObject.ts.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -1904,400 +1580,22 @@
 
 
 
-
-
-
-
-
-
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
+    <h5>Type:</h5>
+    <ul>
+        <li>
             
-                <td class="name"><code>...args</code></td>
-            
+<span class="param-type"><a href="object.html#.ReduceObjectCallbackType">ReduceObjectCallbackType</a>&lt;T, CheckPromiseObjectType&lt;U>, U></span>
 
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>[]</span>
+
+        </li>
+    </ul>
+
+
+
+
 
 
             
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-    <h4 class="name typescript" id=".pipe">
-        pipe&lt;A, B, C, D, E&gt;<span class="signature">(a, b, c, d)</span>
-        <span class="type-signature"> → {<a href="global.html#Func">Func</a>&lt;A, E>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;A, B></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>b</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>c</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;C, D></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>d</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;D, E></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".pipe">
-        pipe&lt;A, B, C, D&gt;<span class="signature">(a, b, c)</span>
-        <span class="type-signature"> → {<a href="global.html#Func">Func</a>&lt;A, D>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;A, B></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>b</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>c</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;C, D></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-    <h4 class="name typescript" id=".pipe">
-        pipe&lt;A, B, C&gt;<span class="signature">(a, b)</span>
-        <span class="type-signature"> → {<a href="global.html#Func">Func</a>&lt;A, C>}</span>
-    </h4>
-    <div class="ts-params typescript">
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>a</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;A, B></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>b</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Func">Func</a>&lt;B, C></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl class="param-type">
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type"><a href="global.html#Func">Func</a></span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-        
-    
-
     
 
     
@@ -2312,10 +1610,10 @@
 <style>
 
 
-nav li[file="utils"]:after {
+nav li[file="asyncobject"]:after {
     display: none;
 }
-nav li[file="utils"] h4, nav li[file="utils"] ul {
+nav li[file="asyncobject"] h4, nav li[file="asyncobject"] ul {
     display: block;
 }
 </style>

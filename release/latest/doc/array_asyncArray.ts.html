@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>array/asyncArray.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/custom.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="description" content="Home - Documentation"/>
+    <meta name="description" content="array/asyncArray.ts - Documentation"/>
 
 </head>
 <body>
@@ -31,102 +31,159 @@
 
 <div id="main">
     
+    <h1 class="page-title">array/asyncArray.ts</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { ReduceArrayCallbackType, EachArrayCallbackType, filterArrayF, eachArrayF, takeArrayF } from "./array";
+import { CheckPromiseIterableType, CheckPromiseReturnType, CheckIterableType} from "../types";
+import { reduceArrayF, mapArrayF } from "./array";
+import { exec, curry } from "../utils";
 
+/**
+ * @namespace asyncArray
+ */
+/**
+ * @memberof asyncArray
+ * @typedef
+ */
+export type ReduceAsyncArrayCallbackType&lt;T, U extends any[]> =
+  ReduceArrayCallbackType&lt;T, CheckPromiseIterableType&lt;U>, U>;
 
+/**
+ * @memberof asyncArray
+ * @typedef
+ */
+export type EachAsyncArrayCallbackType&lt;T extends any[], U> =
+  EachArrayCallbackType&lt;CheckPromiseIterableType&lt;T>, U>;
 
+/**
+ * @memberof asyncArray
+ * @typedef
+ */
+export type AsyncArrayReturnType&lt;T extends any[], U> =
+  CheckPromiseReturnType&lt;CheckIterableType&lt;T>, U>;
 
+/**
+ * @memberof asyncArray
+ * @typedef
+ */
+export type PureArrayType&lt;T extends any[]> =
+  Array&lt;CheckPromiseIterableType&lt;T>>;
 
+export function syncArray&lt;T extends any[]>(arr: T):
+  AsyncArrayReturnType&lt;T, PureArrayType&lt;T>>;
+/**
+ * @memberof asyncArray
+ * @example
+// [1, 2, 3, 4]
+const arr1: number[] = syncArray([1, 2, 3, 4]);
+// Promise => [1, 2, 3, 4]
+const arr2: Promise&lt;number[]> = syncArray([1, Promise.resolve(2), 3, 4]);
+ */
+export function syncArray&lt;T extends any[]>(arr: T) {
+  return takeArrayF(Infinity, arr);
+}
 
+/**
+ * @memberof asyncArray
+ */
+export function reduceAsyncArrayF&lt;T, U extends any[]>(
+  callbackFn: ReduceAsyncArrayCallbackType&lt;T, U>,
+  initial: T,
+  iterator: U,
+): AsyncArrayReturnType&lt;U, T>;
+/**
+ * @memberof asyncArray
+ */
+export function reduceAsyncArrayF&lt;T, U extends any[]>(
+  callbackFn: ReduceAsyncArrayCallbackType&lt;T, U>,
+  initial: T,
+  arr: U): T | Promise&lt;T> {
+  return exec(arr2 => reduceArrayF(callbackFn, initial, arr2), syncArray(arr));
+}
 
+export type Curry2ReduceAsyncArrayType&lt;T, U extends any[]> =
+  (&lt;R extends U>(initial: T, arr: R) => AsyncArrayReturnType&lt;R, T>) &amp;
+  ((initial: T) => &lt;R extends U>(arr: R) => AsyncArrayReturnType&lt;R, T>);
 
+/**
+ * @memberof asyncArray
+ * @function
+ */
+export const reduceAsyncArray:
+(&lt;T, U extends any[]>(
+  callbackFn: ReduceAsyncArrayCallbackType&lt;T, U>,
+  ) => Curry2ReduceAsyncArrayType&lt;T, U>) &amp;
+  (&lt;T, U extends any[]>(
+    callbackFn: ReduceAsyncArrayCallbackType&lt;T, U>,
+    initial: T,
+    arr: U) => AsyncArrayReturnType&lt;U, T>) =
+  /*#__PURE__*/curry(reduceAsyncArrayF);
+export function eachAsyncArrayF&lt;T extends any[]>(
+  callbackFn: EachAsyncArrayCallbackType&lt;T, void>, arr: T):
+  AsyncArrayReturnType&lt;T, PureArrayType&lt;T>>;
 
-    
+/**
+ * @memberof asyncArray
+ */
+export function eachAsyncArrayF&lt;T extends any[]>(
+  callbackFn: EachAsyncArrayCallbackType&lt;T, void>, arr: T) {
+  return exec(arr2 => eachArrayF(callbackFn, arr2), syncArray(arr));
+}
 
+/**
+ * @memberof asyncArray
+ * @function
+ */
+export const eachAsyncArray:
+  (&lt;T extends any[]>(callbackFn: EachAsyncArrayCallbackType&lt;T, void>) =>
+    &lt;U extends T>(arr: U) => AsyncArrayReturnType&lt;U, PureArrayType&lt;U>>) &amp;
+  (&lt;T extends any[]>(callbackFn: EachAsyncArrayCallbackType&lt;T, void>, arr: T) =>
+    AsyncArrayReturnType&lt;T, PureArrayType&lt;T>>) =
+  /*#__PURE__*/curry(eachAsyncArrayF);
 
-    <section class="readme">
-        <article><h1>fjx  <a href="https://badge.fury.io/js/fjx"><img src="https://badge.fury.io/js/fjx.svg" alt="npm version"></a> <a href="https://travis-ci.org/daybrush/fjx"><img src="https://travis-ci.org/daybrush/fjx.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/daybrush/fjx?branch=master"><img src="https://coveralls.io/repos/github/daybrush/fjx/badge.svg?branch=master" alt="Coverage Status"></a></h1>
-<p>fjx is an functional javascript extension. Support Typescript</p>
-<p>Tree shaking is supported and only used functions are included.</p>
-<p><a href="http://daybrush.com/fjx/release/latest/doc"><strong>API Documentation</strong></a></p>
-<h2>utils</h2>
-<ul>
-<li>curry (The type supports up to five arguments of the function.)</li>
-<li>pipe (The type supports up to five arguments of the function.)</li>
-<li>compose (The type supports up to five arguments of the function.)</li>
-<li>exec</li>
-<li>isIterable</li>
-<li>isIterator</li>
-</ul>
-<h2>functions</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>array</th>
-<th>object</th>
-<th>iterable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>each</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>map</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>filter</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>reduce</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>head</td>
-<td>array</td>
-<td>object</td>
-<td>iterable</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>array</td>
-<td>object</td>
-<td>iterable</td>
-</tr>
-<tr>
-<td>take</td>
-<td>asyncArray</td>
-<td>asyncObject</td>
-<td>asyncIterable</td>
-</tr>
-<tr>
-<td>sync</td>
-<td>asyncArray</td>
-<td>asyncObject</td>
-<td>asyncIterable</td>
-</tr>
-</tbody>
-</table></article>
+export function mapAsyncArrayF&lt;T extends any[], U>(
+  callbackFn: EachAsyncArrayCallbackType&lt;T, U>, arr: T):
+  AsyncArrayReturnType&lt;T, U[]>;
+/**
+ * @memberof asyncArray
+ */
+export function mapAsyncArrayF&lt;T extends any[], U>(
+  callbackFn: EachAsyncArrayCallbackType&lt;T, U>, arr: T) {
+  return exec(arr2 => mapArrayF(callbackFn, arr2), syncArray(arr));
+}
+
+/**
+ * @memberof asyncArray
+ * @function
+ */
+export const mapAsyncArray:
+  (&lt;T extends any[], U>(callbackFn: EachAsyncArrayCallbackType&lt;T, U>) =>
+    &lt;A extends T, B extends U>(arr: A) => AsyncArrayReturnType&lt;A, B[]>) &amp;
+  (&lt;T extends any[], U>(callbackFn: EachAsyncArrayCallbackType&lt;T, U>, arr: T) =>
+  AsyncArrayReturnType&lt;T, U[]>) =
+  /*#__PURE__*/curry(mapAsyncArrayF);
+
+export function filterAsyncArrayF&lt;T extends any[]>(
+  callbackFn: EachAsyncArrayCallbackType&lt;T, boolean>, arr: T):
+  AsyncArrayReturnType&lt;T, Array&lt;CheckPromiseIterableType&lt;T>>>;
+/**
+ * @memberof asyncArray
+ */
+export function filterAsyncArrayF&lt;T extends any[]>(
+  callbackFn: EachAsyncArrayCallbackType&lt;T, boolean>, arr: T) {
+  return exec(arr2 => filterArrayF(callbackFn, arr2), syncArray(arr));
+}
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
@@ -134,18 +191,11 @@
 
 <style>
 
-nav>.search+ul li:first-child:after {
+
+nav li[file="array/asyncarray"]:after {
     display: none;
 }
-nav>.search+ul li:first-child h4, nav>.search+ul li:first-child ul {
-    display: block;
-}
-
-
-nav li[file="home"]:after {
-    display: none;
-}
-nav li[file="home"] h4, nav li[file="home"] ul {
+nav li[file="array/asyncarray"] h4, nav li[file="array/asyncarray"] ul {
     display: block;
 }
 </style>

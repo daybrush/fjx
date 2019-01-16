@@ -6,7 +6,7 @@ author: Daybrush
 repository: https://github.com/daybrush/fjx.git
 @version 0.0.1-rc3
 */
-import { isFunction } from '@daybrush/utils';
+import '@daybrush/utils';
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -244,15 +244,35 @@ function __asyncGenerator(thisArg, _arguments, generator) {
     if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]);
   }
 }
+function __asyncValues(o) {
+  if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+  var m = o[Symbol.asyncIterator],
+      i;
+  return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () {
+    return this;
+  }, i);
+
+  function verb(n) {
+    i[n] = o[n] && function (v) {
+      return new Promise(function (resolve, reject) {
+        v = o[n](v), settle(resolve, reject, v.done, v.value);
+      });
+    };
+  }
+
+  function settle(resolve, reject, d, v) {
+    Promise.resolve(v).then(function (v) {
+      resolve({
+        value: v,
+        done: d
+      });
+    }, reject);
+  }
+}
 
 /**
  * @namespace Consts
  */
-
-/**
-* @memberof Consts
-*/
-var IS_SYMBOL = typeof Symbol !== "undefined";
 /**
 * @memberof Consts
 */
@@ -260,334 +280,76 @@ var IS_SYMBOL = typeof Symbol !== "undefined";
 var IS_PROMISE = typeof Promise !== "undefined";
 
 /**
- * @namespace Functions
+ * @memberof asyncArray
+ * @example
+// [1, 2, 3, 4]
+const arr1: number[] = syncArray([1, 2, 3, 4]);
+// Promise => [1, 2, 3, 4]
+const arr2: Promise<number[]> = syncArray([1, Promise.resolve(2), 3, 4]);
  */
 
-/**
- * @memberof Functions
- */
-
-function reduceArrayF(callbackFn, initial, iterator) {
-  return iterator.reduce(callbackFn, initial);
+function syncArray(arr) {
+  return takeArrayF(Infinity, arr);
 }
 /**
- * @memberof Functions
+ * @memberof asyncArray
  */
 
-function reduceObjectF(callbackFn, initial, iterator) {
-  var cur = initial;
-
-  for (var key in iterator) {
-    cur = callbackFn(cur, iterator[key], key, iterator);
-  }
-
-  return cur;
+function reduceAsyncArrayF(callbackFn, initial, arr) {
+  return exec(function (arr2) {
+    return reduceArrayF(callbackFn, initial, arr2);
+  }, syncArray(arr));
 }
 /**
- * @memberof Functions
+ * @memberof asyncArray
+ * @function
  */
 
-function reduceIteratorF(callbackFn, initial, iterator) {
-  var e_1, _a;
-
-  var cur = initial;
-
-  try {
-    for (var iterator_1 = __values(iterator), iterator_1_1 = iterator_1.next(); !iterator_1_1.done; iterator_1_1 = iterator_1.next()) {
-      var value = iterator_1_1.value;
-      cur = callbackFn(cur, value, iterator);
-    }
-  } catch (e_1_1) {
-    e_1 = {
-      error: e_1_1
-    };
-  } finally {
-    try {
-      if (iterator_1_1 && !iterator_1_1.done && (_a = iterator_1.return)) _a.call(iterator_1);
-    } finally {
-      if (e_1) throw e_1.error;
-    }
-  }
-
-  return cur;
-} // each
-
+var reduceAsyncArray =
+/*#__PURE__*/
+curry(reduceAsyncArrayF);
 /**
- * @memberof Functions
- * @returns {} The calling array itself
+ * @memberof asyncArray
  */
 
-function eachArrayF(f, iterator) {
-  iterator.forEach(f);
-  return iterator;
+function eachAsyncArrayF(callbackFn, arr) {
+  return exec(function (arr2) {
+    return eachArrayF(callbackFn, arr2);
+  }, syncArray(arr));
 }
 /**
- * @memberof Functions
- * @returns {} The calling object itself
+ * @memberof asyncArray
+ * @function
  */
 
-function eachObjectF(f, iterator) {
-  for (var key in iterator) {
-    f(iterator[key], key, iterator);
-  }
+var eachAsyncArray =
+/*#__PURE__*/
+curry(eachAsyncArrayF);
+/**
+ * @memberof asyncArray
+ */
 
-  return iterator;
+function mapAsyncArrayF(callbackFn, arr) {
+  return exec(function (arr2) {
+    return mapArrayF(callbackFn, arr2);
+  }, syncArray(arr));
 }
 /**
- * @memberof Functions
-* @returns {} The calling iterator itself
+ * @memberof asyncArray
+ * @function
  */
 
-function eachIteratorF(f, iterator) {
-  var e_2, _a;
-
-  try {
-    for (var iterator_2 = __values(iterator), iterator_2_1 = iterator_2.next(); !iterator_2_1.done; iterator_2_1 = iterator_2.next()) {
-      var value = iterator_2_1.value;
-      f(value, iterator);
-    }
-  } catch (e_2_1) {
-    e_2 = {
-      error: e_2_1
-    };
-  } finally {
-    try {
-      if (iterator_2_1 && !iterator_2_1.done && (_a = iterator_2.return)) _a.call(iterator_2);
-    } finally {
-      if (e_2) throw e_2.error;
-    }
-  }
-
-  return iterator;
-} // map
-
+var mapAsyncArray =
+/*#__PURE__*/
+curry(mapAsyncArrayF);
 /**
- * @memberof FunctionS
+ * @memberof asyncArray
  */
 
-function mapArrayF(f, iterator) {
-  return iterator.map(f);
-}
-/**
- * @memberof Functions
- */
-
-function mapObjectF(f, iterator) {
-  var obj = {};
-
-  for (var key in iterator) {
-    obj[key] = f(iterator[key], key, iterator);
-  }
-
-  return obj;
-}
-/**
- * @memberof Functions
- */
-
-function mapIteratorF(f, iterator) {
-  var e_3, _a, iterator_3, iterator_3_1, value, e_3_1;
-
-  return __generator(this, function (_b) {
-    switch (_b.label) {
-      case 0:
-        _b.trys.push([0, 5, 6, 7]);
-
-        iterator_3 = __values(iterator), iterator_3_1 = iterator_3.next();
-        _b.label = 1;
-
-      case 1:
-        if (!!iterator_3_1.done) return [3
-        /*break*/
-        , 4];
-        value = iterator_3_1.value;
-        return [4
-        /*yield*/
-        , f(value, iterator)];
-
-      case 2:
-        _b.sent();
-
-        _b.label = 3;
-
-      case 3:
-        iterator_3_1 = iterator_3.next();
-        return [3
-        /*break*/
-        , 1];
-
-      case 4:
-        return [3
-        /*break*/
-        , 7];
-
-      case 5:
-        e_3_1 = _b.sent();
-        e_3 = {
-          error: e_3_1
-        };
-        return [3
-        /*break*/
-        , 7];
-
-      case 6:
-        try {
-          if (iterator_3_1 && !iterator_3_1.done && (_a = iterator_3.return)) _a.call(iterator_3);
-        } finally {
-          if (e_3) throw e_3.error;
-        }
-
-        return [7
-        /*endfinally*/
-        ];
-
-      case 7:
-        return [2
-        /*return*/
-        ];
-    }
-  });
-} // filter
-
-/**
- * @memberof Functions
- */
-
-function filterArrayF(f, iterator) {
-  return iterator.filter(f);
-}
-/**
- * @memberof Functions
- */
-
-function filterObjectF(f, iterator) {
-  var obj = {};
-
-  for (var key in iterator) {
-    f(iterator[key], key, iterator) && (obj[key] = iterator[key]);
-  }
-
-  return obj;
-}
-/**
- * @memberof Functions
- */
-
-function filterIteratorF(f, iterator) {
-  var e_4, _a, iterator_4, iterator_4_1, value, _b, e_4_1;
-
-  return __generator(this, function (_c) {
-    switch (_c.label) {
-      case 0:
-        _c.trys.push([0, 6, 7, 8]);
-
-        iterator_4 = __values(iterator), iterator_4_1 = iterator_4.next();
-        _c.label = 1;
-
-      case 1:
-        if (!!iterator_4_1.done) return [3
-        /*break*/
-        , 5];
-        value = iterator_4_1.value;
-        _b = f(value, iterator);
-        if (!_b) return [3
-        /*break*/
-        , 3];
-        return [4
-        /*yield*/
-        , value];
-
-      case 2:
-        _b = _c.sent();
-        _c.label = 3;
-
-      case 3:
-        _c.label = 4;
-
-      case 4:
-        iterator_4_1 = iterator_4.next();
-        return [3
-        /*break*/
-        , 1];
-
-      case 5:
-        return [3
-        /*break*/
-        , 8];
-
-      case 6:
-        e_4_1 = _c.sent();
-        e_4 = {
-          error: e_4_1
-        };
-        return [3
-        /*break*/
-        , 8];
-
-      case 7:
-        try {
-          if (iterator_4_1 && !iterator_4_1.done && (_a = iterator_4.return)) _a.call(iterator_4);
-        } finally {
-          if (e_4) throw e_4.error;
-        }
-
-        return [7
-        /*endfinally*/
-        ];
-
-      case 8:
-        return [2
-        /*return*/
-        ];
-    }
-  });
-}
-/**
- * @memberof Functions
- */
-
-function headArray(iterator) {
-  return iterator[0];
-}
-/**
- * @memberof Functions
- */
-
-function tailArray(iterator) {
-  return iterator[iterator.length - 1];
-}
-/**
- * @memberof Functions
- */
-
-function head(iterator) {
-  var e_5, _a;
-
-  try {
-    for (var iterator_5 = __values(iterator), iterator_5_1 = iterator_5.next(); !iterator_5_1.done; iterator_5_1 = iterator_5.next()) {
-      var value = iterator_5_1.value;
-      return value;
-    }
-  } catch (e_5_1) {
-    e_5 = {
-      error: e_5_1
-    };
-  } finally {
-    try {
-      if (iterator_5_1 && !iterator_5_1.done && (_a = iterator_5.return)) _a.call(iterator_5);
-    } finally {
-      if (e_5) throw e_5.error;
-    }
-  }
-}
-/**
- * @memberof Functions
- */
-
-function tail(iterator) {
-  return reduceIteratorF(function (prev) {
-    return prev;
-  }, void 0, iterator);
+function filterAsyncArrayF(callbackFn, arr) {
+  return exec(function (arr2) {
+    return filterArrayF(callbackFn, arr2);
+  }, syncArray(arr));
 }
 
 /**
@@ -605,15 +367,10 @@ function isPromise(value) {
  * @memberof utils
  */
 
-function isIterable(iter) {
-  return IS_SYMBOL && !!(iter && (iter[Symbol.iterator] || iter[Symbol.asyncIterator]));
-}
-/**
- * @memberof utils
- */
-
-function isIterator(iter) {
-  return iter && isFunction(iter.next);
+function exec(f, v) {
+  return isPromise(v) ? v.then(function (pv) {
+    return f(pv);
+  }) : f(v);
 }
 /**
  * @memberof utils
@@ -641,609 +398,17 @@ function curry(f) {
 
   return nest(length, []);
 }
-function _pipe(args) {
-  return function (a) {
-    return reduceArrayF(function (prev, cur) {
-      return cur(prev);
-    }, a, args);
-  };
+
+/**
+ * @memberof array
+ */
+
+function eachArrayF(f, arr) {
+  arr.forEach(f);
+  return arr;
 }
 /**
- * @memberof utils
- */
-
-function pipe() {
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-
-  return _pipe(args);
-}
-/**
- * @memberof utils
- */
-
-function compose() {
-  var args = [];
-
-  for (var _i = 0; _i < arguments.length; _i++) {
-    args[_i] = arguments[_i];
-  }
-
-  return _pipe(args.reverse());
-}
-
-/**
- * @memberof AsyncFunctions
- */
-
-function exec(v, f) {
-  return isPromise(v) ? v.then(function (pv) {
-    return f(pv);
-  }) : f(v);
-} // async to await
-
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncArray(iterator) {
-  var _this = this;
-
-  return reduceArrayF(function (prev, cur) {
-    return __awaiter(_this, void 0, void 0, function () {
-      var _a, _b;
-
-      return __generator(this, function (_c) {
-        switch (_c.label) {
-          case 0:
-            return [4
-            /*yield*/
-            , prev];
-
-          case 1:
-            _b = (_a = _c.sent()).push;
-            return [4
-            /*yield*/
-            , cur];
-
-          case 2:
-            _b.apply(_a, [_c.sent()]);
-
-            return [2
-            /*return*/
-            , prev];
-        }
-      });
-    });
-  }, [], iterator);
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncObject(iterator) {
-  var _this = this;
-
-  return reduceObjectF(function (prev, cur, key) {
-    return __awaiter(_this, void 0, void 0, function () {
-      var _a, _b;
-
-      return __generator(this, function (_c) {
-        switch (_c.label) {
-          case 0:
-            return [4
-            /*yield*/
-            , prev];
-
-          case 1:
-            _a = _c.sent();
-            _b = key;
-            return [4
-            /*yield*/
-            , cur];
-
-          case 2:
-            _a[_b] = _c.sent();
-            return [2
-            /*return*/
-            , prev];
-        }
-      });
-    });
-  }, {}, iterator);
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function toArray(iterator) {
-  return Array.from(iterator);
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncIterator(iterator) {
-  return Promise.all(toArray(iterator)).then(function (list) {
-    return list[Symbol.iterator]();
-  });
-} // async reduce
-
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncReduceArrayF(callbackFn, initial, iterator) {
-  var _this = this;
-
-  return reduceArrayF(function (prev, cur, index) {
-    return __awaiter(_this, void 0, void 0, function () {
-      var prev2, cur2;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            return [4
-            /*yield*/
-            , prev];
-
-          case 1:
-            prev2 = _a.sent();
-            return [4
-            /*yield*/
-            , cur];
-
-          case 2:
-            cur2 = _a.sent();
-            return [2
-            /*return*/
-            , callbackFn(prev2, cur2, index, iterator)];
-        }
-      });
-    });
-  }, initial, iterator);
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncReduceObjectF(callbackFn, initial, iterator) {
-  var _this = this;
-
-  return reduceObjectF(function (prev, cur, key) {
-    return __awaiter(_this, void 0, void 0, function () {
-      var prev2, cur2;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            return [4
-            /*yield*/
-            , prev];
-
-          case 1:
-            prev2 = _a.sent();
-            return [4
-            /*yield*/
-            , cur];
-
-          case 2:
-            cur2 = _a.sent();
-            return [2
-            /*return*/
-            , callbackFn(prev2, cur2, key, iterator)];
-        }
-      });
-    });
-  }, initial, iterator);
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncReduceIteratorF(callbackFn, initial, iterator) {
-  var _this = this;
-
-  return reduceIteratorF(function (prev, cur) {
-    return __awaiter(_this, void 0, void 0, function () {
-      var prev2, cur2;
-      return __generator(this, function (_a) {
-        switch (_a.label) {
-          case 0:
-            return [4
-            /*yield*/
-            , prev];
-
-          case 1:
-            prev2 = _a.sent();
-            return [4
-            /*yield*/
-            , cur];
-
-          case 2:
-            cur2 = _a.sent();
-            return [2
-            /*return*/
-            , callbackFn(prev2, cur2, iterator)];
-        }
-      });
-    });
-  }, initial, iterator);
-} // async each
-
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncEachArrayF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-      return [2
-      /*return*/
-      , asyncReduceArrayF(function (prev, cur, index) {
-        f(cur, index, iterator);
-        return cur;
-      }, void 0, iterator).then(function () {
-        return iterator;
-      })];
-    });
-  });
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncEachObjectF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-      return [2
-      /*return*/
-      , asyncReduceObjectF(function (prev, cur, key) {
-        f(cur, key, iterator);
-        return cur;
-      }, void 0, iterator).then(function () {
-        return iterator;
-      })];
-    });
-  });
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncEachIteratorF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    var e_1, _a, iterator_1, iterator_1_1, value, _b, e_1_1;
-
-    return __generator(this, function (_c) {
-      switch (_c.label) {
-        case 0:
-          _c.trys.push([0, 5, 6, 7]);
-
-          iterator_1 = __values(iterator), iterator_1_1 = iterator_1.next();
-          _c.label = 1;
-
-        case 1:
-          if (!!iterator_1_1.done) return [3
-          /*break*/
-          , 4];
-          value = iterator_1_1.value;
-          _b = f;
-          return [4
-          /*yield*/
-          , value];
-
-        case 2:
-          _b.apply(void 0, [_c.sent(), iterator]);
-
-          _c.label = 3;
-
-        case 3:
-          iterator_1_1 = iterator_1.next();
-          return [3
-          /*break*/
-          , 1];
-
-        case 4:
-          return [3
-          /*break*/
-          , 7];
-
-        case 5:
-          e_1_1 = _c.sent();
-          e_1 = {
-            error: e_1_1
-          };
-          return [3
-          /*break*/
-          , 7];
-
-        case 6:
-          try {
-            if (iterator_1_1 && !iterator_1_1.done && (_a = iterator_1.return)) _a.call(iterator_1);
-          } finally {
-            if (e_1) throw e_1.error;
-          }
-
-          return [7
-          /*endfinally*/
-          ];
-
-        case 7:
-          return [2
-          /*return*/
-          , iterator];
-      }
-    });
-  });
-} // async map
-
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncMapArrayF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-      return [2
-      /*return*/
-      , asyncReduceArrayF(function (prev, cur, index) {
-        prev.push(f(cur, index, iterator));
-        return prev;
-      }, [], iterator)];
-    });
-  });
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncMapObjectF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-      return [2
-      /*return*/
-      , asyncReduceObjectF(function (prev, cur, key) {
-        prev[key] = f(cur, key, iterator);
-        return prev;
-      }, {}, iterator)];
-    });
-  });
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncMapIteratorF(f, iterator) {
-  return __asyncGenerator(this, arguments, function asyncMapIteratorF_1() {
-    var e_2, _a, iterator_2, iterator_2_1, value, _b, e_2_1;
-
-    return __generator(this, function (_c) {
-      switch (_c.label) {
-        case 0:
-          _c.trys.push([0, 7, 8, 9]);
-
-          iterator_2 = __values(iterator), iterator_2_1 = iterator_2.next();
-          _c.label = 1;
-
-        case 1:
-          if (!!iterator_2_1.done) return [3
-          /*break*/
-          , 6];
-          value = iterator_2_1.value;
-          _b = f;
-          return [4
-          /*yield*/
-          , __await(value)];
-
-        case 2:
-          return [4
-          /*yield*/
-          , __await.apply(void 0, [_b.apply(void 0, [_c.sent(), iterator])])];
-
-        case 3:
-          return [4
-          /*yield*/
-          , _c.sent()];
-
-        case 4:
-          _c.sent();
-
-          _c.label = 5;
-
-        case 5:
-          iterator_2_1 = iterator_2.next();
-          return [3
-          /*break*/
-          , 1];
-
-        case 6:
-          return [3
-          /*break*/
-          , 9];
-
-        case 7:
-          e_2_1 = _c.sent();
-          e_2 = {
-            error: e_2_1
-          };
-          return [3
-          /*break*/
-          , 9];
-
-        case 8:
-          try {
-            if (iterator_2_1 && !iterator_2_1.done && (_a = iterator_2.return)) _a.call(iterator_2);
-          } finally {
-            if (e_2) throw e_2.error;
-          }
-
-          return [7
-          /*endfinally*/
-          ];
-
-        case 9:
-          return [2
-          /*return*/
-          ];
-      }
-    });
-  });
-} // async filter
-
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncFilterArrayF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-      return [2
-      /*return*/
-      , asyncReduceArrayF(function (prev, cur, index) {
-        f(cur, index, iterator) && prev.push(cur);
-        return prev;
-      }, [], iterator)];
-    });
-  });
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncFilterObjectF(f, iterator) {
-  return __awaiter(this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-      return [2
-      /*return*/
-      , asyncReduceObjectF(function (prev, cur, key) {
-        f(cur, key, iterator) && (prev[key] = cur);
-        return prev;
-      }, {}, iterator)];
-    });
-  });
-}
-/**
- * @memberof AsyncFunctions
- */
-
-function asyncFilterIteratorF(f, iterator) {
-  return __asyncGenerator(this, arguments, function asyncFilterIteratorF_1() {
-    var e_3, _a, iterator_3, iterator_3_1, value, _b, _c, e_3_1;
-
-    return __generator(this, function (_d) {
-      switch (_d.label) {
-        case 0:
-          _d.trys.push([0, 8, 9, 10]);
-
-          iterator_3 = __values(iterator), iterator_3_1 = iterator_3.next();
-          _d.label = 1;
-
-        case 1:
-          if (!!iterator_3_1.done) return [3
-          /*break*/
-          , 7];
-          value = iterator_3_1.value;
-          _c = f;
-          return [4
-          /*yield*/
-          , __await(value)];
-
-        case 2:
-          _b = _c.apply(void 0, [_d.sent(), iterator]);
-          if (!_b) return [3
-          /*break*/
-          , 5];
-          return [4
-          /*yield*/
-          , __await(value)];
-
-        case 3:
-          return [4
-          /*yield*/
-          , _d.sent()];
-
-        case 4:
-          _b = _d.sent();
-          _d.label = 5;
-
-        case 5:
-          _d.label = 6;
-
-        case 6:
-          iterator_3_1 = iterator_3.next();
-          return [3
-          /*break*/
-          , 1];
-
-        case 7:
-          return [3
-          /*break*/
-          , 10];
-
-        case 8:
-          e_3_1 = _d.sent();
-          e_3 = {
-            error: e_3_1
-          };
-          return [3
-          /*break*/
-          , 10];
-
-        case 9:
-          try {
-            if (iterator_3_1 && !iterator_3_1.done && (_a = iterator_3.return)) _a.call(iterator_3);
-          } finally {
-            if (e_3) throw e_3.error;
-          }
-
-          return [7
-          /*endfinally*/
-          ];
-
-        case 10:
-          return [2
-          /*return*/
-          ];
-      }
-    });
-  });
-}
-
-/**
- * @namespace Currying
- * @sort 1
- */
-
-/**
- * @memberof Currying
- * @function
- */
-// currying reduce
-
-var reduceArray =
-/*#__PURE__*/
-curry(reduceArrayF);
-/**
- * @memberof Currying
- * @function
- */
-
-var reduceObject =
-/*#__PURE__*/
-curry(reduceObjectF);
-/**
- * @memberof Currying
- * @function
- */
-
-var reduceIterator =
-/*#__PURE__*/
-curry(reduceIteratorF); // currying each
-
-/**
- * @memberof Currying
+ * @memberof array
  * @function
  */
 
@@ -1251,23 +416,14 @@ var eachArray =
 /*#__PURE__*/
 curry(eachArrayF);
 /**
- * @memberof Currying
- * @function
+ * @memberof array
  */
 
-var eachObject =
-/*#__PURE__*/
-curry(eachObjectF);
+function mapArrayF(f, arr) {
+  return arr.map(f);
+}
 /**
- * @memberof Currying
- * @function
- */
-
-var eachIterator =
-/*#__PURE__*/
-curry(eachIteratorF);
-/**
- * @memberof Currying
+ * @memberof array
  * @function
  */
 
@@ -1275,23 +431,29 @@ var mapArray =
 /*#__PURE__*/
 curry(mapArrayF);
 /**
- * @memberof Currying
+ * @memberof array
+ */
+
+function reduceArrayF(callbackFn, initial, arr) {
+  return arr.reduce(callbackFn, initial);
+}
+/**
+ * @memberof array
  * @function
  */
 
-var mapObject =
+var reduceArray =
 /*#__PURE__*/
-curry(mapObjectF);
+curry(reduceArrayF);
 /**
- * @memberof Currying
- * @function
+ * @memberof array
  */
 
-var mapIterator =
-/*#__PURE__*/
-curry(mapIteratorF);
+function filterArrayF(f, arr) {
+  return arr.filter(f);
+}
 /**
- * @memberof Currying
+ * @memberof array
  * @function
  */
 
@@ -1299,55 +461,920 @@ var filterArray =
 /*#__PURE__*/
 curry(filterArrayF);
 /**
- * @memberof Currying
+ * @memberof array
+ */
+
+function headArray(iterator) {
+  return iterator[0];
+}
+/**
+ * @memberof array
+ */
+
+function tailArray(iterator) {
+  return iterator[iterator.length - 1];
+}
+/**
+ * @memberof array
+ */
+
+function takeArrayF(length, arr) {
+  var arrLength = Math.min(length, arr.length);
+  var arr2 = arr.slice(0, arrLength);
+  return reduceArrayF(function (prev, cur) {
+    return exec(function (p) {
+      return exec(function (c) {
+        p.push(c);
+        return p;
+      }, cur);
+    }, prev);
+  }, [], arr2);
+}
+/**
+ * @memberof array
  * @function
  */
 
-var filterObject =
+var takeArray =
 /*#__PURE__*/
-curry(filterObjectF);
+curry(takeArrayF);
+
 /**
- * @memberof Currying
- * @function
+ * @memberof object
  */
 
-var filterIterator =
-/*#__PURE__*/
-curry(filterIteratorF); // currying async each
+function reduceObjectF(callbackFn, initial, obj) {
+  var cur = initial;
 
+  for (var key in obj) {
+    cur = callbackFn(cur, obj[key], key, obj);
+  }
+
+  return cur;
+}
 /**
- * @memberof Currying
- * @function
+ * @memberof object
  */
 
-var asyncEachIterator =
-/*#__PURE__*/
-curry(asyncEachIteratorF);
+function eachObjectF(f, obj) {
+  for (var key in obj) {
+    f(obj[key], key, obj);
+  }
+
+  return obj;
+}
 /**
- * @memberof Currying
- * @function
+ * @memberof object
  */
 
-var asyncReduceIterator =
-/*#__PURE__*/
-curry(asyncReduceIteratorF);
+function mapObjectF(f, obj) {
+  var rv = {};
+
+  for (var key in obj) {
+    rv[key] = f(obj[key], key, obj);
+  }
+
+  return rv;
+}
 /**
- * @memberof Currying
- * @function
- * @param {} callbackFn - Function that produces an element of the new Iterator.
- * @param {} [iterator] - The iterator to call this function.
+ * @memberof object
+ */
+
+function filterObjectF(f, obj) {
+  var rv = {};
+
+  for (var key in obj) {
+    f(obj[key], key, obj) && (rv[key] = obj[key]);
+  }
+
+  return rv;
+}
+/**
+ * @memberof object
+ */
+
+function values$1(obj) {
+  return Object.values(obj);
+}
+/**
+ * @memberof object
+ */
+
+function keys(obj) {
+  return Object.keys(obj);
+}
+/**
+ * @memberof object
+ */
+
+function headObject(obj) {
+  return headArray(values$1(obj));
+}
+/**
+ * @memberof object
+ */
+
+function tailObject(obj) {
+  return tailArray(values$1(obj));
+}
+/**
+ * @memberof object
+ */
+
+function takeObjectF(length, obj) {
+  var objkeys = keys(obj);
+  var arrLength = Math.min(length, objkeys.length);
+  var objkeys2 = objkeys.slice(0, arrLength);
+  return reduceArrayF(function (prev, cur) {
+    return exec(function (p) {
+      return exec(function (c) {
+        p[cur] = obj[cur];
+        return p;
+      }, cur);
+    }, prev);
+  }, {}, objkeys2);
+}
+
+/**
+ * @memberof asyncObject
  * @example
-asyncMapIterator(v => console.log(v), [fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3]);
-
-// curry
-const func = asyncMapIterator(v => console.log(v));
-
-func([fetch("https://daybrush.com").then(res => res.json()), 1, 2, 3])
+// {a: 1, b: 2, c: 3 , d: 4}
+const obj1: ObjectInterface<number> = syncObject({
+    a: 1,
+    b: 2,
+    c: 3,
+    d: 4,
+});
+// Promise => {a: 1, b: 2, c: 3 , d: 4}
+const obj2: Promise<ObjectInterface<number>> = syncObject({
+    a: 1,
+    b: Promise.resolve(2),
+    c: 3,
+    d: 4,
+});
  */
 
-var asyncMapIterator =
-/*#__PURE__*/
-curry(asyncMapIteratorF);
+function syncObject(obj) {
+  return takeObjectF(Infinity, obj);
+}
+/**
+ * @memberof asyncObject
+ */
 
-export { reduceArray, reduceObject, reduceIterator, eachArray, eachObject, eachIterator, mapArray, mapObject, mapIterator, filterArray, filterObject, filterIterator, asyncEachIterator, asyncReduceIterator, asyncMapIterator, reduceArrayF, reduceObjectF, reduceIteratorF, eachArrayF, eachObjectF, eachIteratorF, mapArrayF, mapObjectF, mapIteratorF, filterArrayF, filterObjectF, filterIteratorF, headArray, tailArray, head, tail, exec, asyncArray, asyncObject, toArray, asyncIterator, asyncReduceArrayF, asyncReduceObjectF, asyncReduceIteratorF, asyncEachArrayF, asyncEachObjectF, asyncEachIteratorF, asyncMapArrayF, asyncMapObjectF, asyncMapIteratorF, asyncFilterArrayF, asyncFilterObjectF, asyncFilterIteratorF, isPromise, isIterable, isIterator, curry, _pipe, pipe, compose };
+function reduceAsyncObjectF(callbackFn, initial, obj) {
+  return exec(function (obj2) {
+    return reduceObjectF(callbackFn, initial, obj2);
+  }, syncObject(obj));
+}
+/**
+ * @memberof asyncObject
+ */
+
+function eachAsyncObjectF(callbackFn, obj) {
+  return exec(function (obj2) {
+    return eachObjectF(callbackFn, obj2);
+  }, syncObject(obj));
+}
+/**
+ * @memberof asyncObject
+ */
+
+function mapAsyncObjectF(callbackFn, obj) {
+  return exec(function (obj2) {
+    return mapObjectF(callbackFn, obj2);
+  }, syncObject(obj));
+}
+/**
+ * @memberof asyncObject
+ */
+
+function filterAsyncObjectF(callbackFn, obj) {
+  return exec(function (obj2) {
+    return filterObjectF(callbackFn, obj2);
+  }, syncObject(obj));
+}
+
+/**
+ * @memberof iterable
+ */
+
+function reduceIterableF(callbackFn, initial, iterable) {
+  var e_1, _a;
+
+  var cur = initial;
+
+  var _loop_1 = function (value) {
+    cur = exec(function (c) {
+      return exec(function (v) {
+        return callbackFn(c, v, iterable);
+      }, value);
+    }, cur);
+  };
+
+  try {
+    for (var iterable_1 = __values(iterable), iterable_1_1 = iterable_1.next(); !iterable_1_1.done; iterable_1_1 = iterable_1.next()) {
+      var value = iterable_1_1.value;
+
+      _loop_1(value);
+    }
+  } catch (e_1_1) {
+    e_1 = {
+      error: e_1_1
+    };
+  } finally {
+    try {
+      if (iterable_1_1 && !iterable_1_1.done && (_a = iterable_1.return)) _a.call(iterable_1);
+    } finally {
+      if (e_1) throw e_1.error;
+    }
+  }
+
+  return cur;
+}
+/**
+ * @memberof iterable
+ */
+
+function eachIterableF(callbackFn, iterable) {
+  var e_2, _a;
+
+  try {
+    for (var iterable_2 = __values(iterable), iterable_2_1 = iterable_2.next(); !iterable_2_1.done; iterable_2_1 = iterable_2.next()) {
+      var value = iterable_2_1.value;
+      exec(function (v) {
+        return callbackFn(v, iterable);
+      }, value);
+    }
+  } catch (e_2_1) {
+    e_2 = {
+      error: e_2_1
+    };
+  } finally {
+    try {
+      if (iterable_2_1 && !iterable_2_1.done && (_a = iterable_2.return)) _a.call(iterable_2);
+    } finally {
+      if (e_2) throw e_2.error;
+    }
+  }
+
+  return iterable;
+}
+/**
+ * @memberof iterable
+ */
+
+function mapIterableF(callbackFn, iterable) {
+  var e_3, _a, iterable_3, iterable_3_1, value, e_3_1;
+
+  return __generator(this, function (_b) {
+    switch (_b.label) {
+      case 0:
+        _b.trys.push([0, 5, 6, 7]);
+
+        iterable_3 = __values(iterable), iterable_3_1 = iterable_3.next();
+        _b.label = 1;
+
+      case 1:
+        if (!!iterable_3_1.done) return [3
+        /*break*/
+        , 4];
+        value = iterable_3_1.value;
+        return [4
+        /*yield*/
+        , exec(function (v) {
+          return callbackFn(v, iterable);
+        }, value)];
+
+      case 2:
+        _b.sent();
+
+        _b.label = 3;
+
+      case 3:
+        iterable_3_1 = iterable_3.next();
+        return [3
+        /*break*/
+        , 1];
+
+      case 4:
+        return [3
+        /*break*/
+        , 7];
+
+      case 5:
+        e_3_1 = _b.sent();
+        e_3 = {
+          error: e_3_1
+        };
+        return [3
+        /*break*/
+        , 7];
+
+      case 6:
+        try {
+          if (iterable_3_1 && !iterable_3_1.done && (_a = iterable_3.return)) _a.call(iterable_3);
+        } finally {
+          if (e_3) throw e_3.error;
+        }
+
+        return [7
+        /*endfinally*/
+        ];
+
+      case 7:
+        return [2
+        /*return*/
+        ];
+    }
+  });
+}
+/**
+ * @memberof iterable
+ */
+
+function filterIterableF(callbackFn, iterable) {
+  var e_4, _a, iterable_4, iterable_4_1, value, _b, e_4_1;
+
+  return __generator(this, function (_c) {
+    switch (_c.label) {
+      case 0:
+        _c.trys.push([0, 6, 7, 8]);
+
+        iterable_4 = __values(iterable), iterable_4_1 = iterable_4.next();
+        _c.label = 1;
+
+      case 1:
+        if (!!iterable_4_1.done) return [3
+        /*break*/
+        , 5];
+        value = iterable_4_1.value;
+        _b = exec(function (v) {
+          return callbackFn(v, iterable);
+        }, value);
+        if (!_b) return [3
+        /*break*/
+        , 3];
+        return [4
+        /*yield*/
+        , value];
+
+      case 2:
+        _b = _c.sent();
+        _c.label = 3;
+
+      case 3:
+        _c.label = 4;
+
+      case 4:
+        iterable_4_1 = iterable_4.next();
+        return [3
+        /*break*/
+        , 1];
+
+      case 5:
+        return [3
+        /*break*/
+        , 8];
+
+      case 6:
+        e_4_1 = _c.sent();
+        e_4 = {
+          error: e_4_1
+        };
+        return [3
+        /*break*/
+        , 8];
+
+      case 7:
+        try {
+          if (iterable_4_1 && !iterable_4_1.done && (_a = iterable_4.return)) _a.call(iterable_4);
+        } finally {
+          if (e_4) throw e_4.error;
+        }
+
+        return [7
+        /*endfinally*/
+        ];
+
+      case 8:
+        return [2
+        /*return*/
+        ];
+    }
+  });
+}
+/**
+ * @memberof iterable
+ */
+
+function headIterable(iterable) {
+  var e_5, _a;
+
+  try {
+    for (var iterable_5 = __values(iterable), iterable_5_1 = iterable_5.next(); !iterable_5_1.done; iterable_5_1 = iterable_5.next()) {
+      var value = iterable_5_1.value;
+      return value;
+    }
+  } catch (e_5_1) {
+    e_5 = {
+      error: e_5_1
+    };
+  } finally {
+    try {
+      if (iterable_5_1 && !iterable_5_1.done && (_a = iterable_5.return)) _a.call(iterable_5);
+    } finally {
+      if (e_5) throw e_5.error;
+    }
+  }
+}
+/**
+ * @memberof iterable
+ */
+
+function tailIterable(iterable) {
+  var e_6, _a;
+
+  var cur;
+
+  try {
+    for (var iterable_6 = __values(iterable), iterable_6_1 = iterable_6.next(); !iterable_6_1.done; iterable_6_1 = iterable_6.next()) {
+      var value = iterable_6_1.value;
+      cur = value;
+    }
+  } catch (e_6_1) {
+    e_6 = {
+      error: e_6_1
+    };
+  } finally {
+    try {
+      if (iterable_6_1 && !iterable_6_1.done && (_a = iterable_6.return)) _a.call(iterable_6);
+    } finally {
+      if (e_6) throw e_6.error;
+    }
+  }
+
+  return cur;
+}
+function getIterator(iterable) {
+  return (iterable[Symbol.asyncIterator] || iterable[Symbol.asyncIterator])();
+}
+/**
+ * @memberof iterable
+ */
+
+function takeIterableF(length, iterable) {
+  var cur = [];
+
+  if (length === 0) {
+    return cur;
+  }
+
+  var i = 0;
+
+  function _result(result, iter) {
+    if (result.done || i >= length) {
+      return cur;
+    }
+
+    ++i;
+    var value = result.value;
+
+    if (isPromise(value)) {
+      return value.then(function (v) {
+        cur.push(v);
+        return _take(iter);
+      });
+    } else {
+      cur.push(value);
+    }
+
+    return cur;
+  }
+
+  function _take(iter) {
+    var result = iter.next();
+    return exec(function (r) {
+      return _result(r, iter);
+    }, result);
+  }
+
+  return _take(getIterator(iterable));
+}
+
+/**
+ * @memberof asyncIterable
+ */
+
+function eachAsyncIterableF(callbackFn, iterable) {
+  var iterable_1, iterable_1_1;
+  return __awaiter(this, void 0, void 0, function () {
+    var e_1, _a, value, _b, e_1_1;
+
+    return __generator(this, function (_c) {
+      switch (_c.label) {
+        case 0:
+          _c.trys.push([0, 6, 7, 12]);
+
+          iterable_1 = __asyncValues(iterable);
+          _c.label = 1;
+
+        case 1:
+          return [4
+          /*yield*/
+          , iterable_1.next()];
+
+        case 2:
+          if (!(iterable_1_1 = _c.sent(), !iterable_1_1.done)) return [3
+          /*break*/
+          , 5];
+          value = iterable_1_1.value;
+          _b = callbackFn;
+          return [4
+          /*yield*/
+          , value];
+
+        case 3:
+          _b.apply(void 0, [_c.sent(), iterable]);
+
+          _c.label = 4;
+
+        case 4:
+          return [3
+          /*break*/
+          , 1];
+
+        case 5:
+          return [3
+          /*break*/
+          , 12];
+
+        case 6:
+          e_1_1 = _c.sent();
+          e_1 = {
+            error: e_1_1
+          };
+          return [3
+          /*break*/
+          , 12];
+
+        case 7:
+          _c.trys.push([7,, 10, 11]);
+
+          if (!(iterable_1_1 && !iterable_1_1.done && (_a = iterable_1.return))) return [3
+          /*break*/
+          , 9];
+          return [4
+          /*yield*/
+          , _a.call(iterable_1)];
+
+        case 8:
+          _c.sent();
+
+          _c.label = 9;
+
+        case 9:
+          return [3
+          /*break*/
+          , 11];
+
+        case 10:
+          if (e_1) throw e_1.error;
+          return [7
+          /*endfinally*/
+          ];
+
+        case 11:
+          return [7
+          /*endfinally*/
+          ];
+
+        case 12:
+          return [2
+          /*return*/
+          , iterable];
+      }
+    });
+  });
+}
+/**
+ * @memberof asyncIterable
+ */
+
+function mapAsyncIterableF(callbackFn, iterable) {
+  return __asyncGenerator(this, arguments, function mapAsyncIterableF_1() {
+    var e_2, _a, iterable_2, iterable_2_1, value, _b, e_2_1;
+
+    return __generator(this, function (_c) {
+      switch (_c.label) {
+        case 0:
+          _c.trys.push([0, 8, 9, 14]);
+
+          iterable_2 = __asyncValues(iterable);
+          _c.label = 1;
+
+        case 1:
+          return [4
+          /*yield*/
+          , __await(iterable_2.next())];
+
+        case 2:
+          if (!(iterable_2_1 = _c.sent(), !iterable_2_1.done)) return [3
+          /*break*/
+          , 7];
+          value = iterable_2_1.value;
+          _b = callbackFn;
+          return [4
+          /*yield*/
+          , __await(value)];
+
+        case 3:
+          return [4
+          /*yield*/
+          , __await.apply(void 0, [_b.apply(void 0, [_c.sent(), iterable])])];
+
+        case 4:
+          return [4
+          /*yield*/
+          , _c.sent()];
+
+        case 5:
+          _c.sent();
+
+          _c.label = 6;
+
+        case 6:
+          return [3
+          /*break*/
+          , 1];
+
+        case 7:
+          return [3
+          /*break*/
+          , 14];
+
+        case 8:
+          e_2_1 = _c.sent();
+          e_2 = {
+            error: e_2_1
+          };
+          return [3
+          /*break*/
+          , 14];
+
+        case 9:
+          _c.trys.push([9,, 12, 13]);
+
+          if (!(iterable_2_1 && !iterable_2_1.done && (_a = iterable_2.return))) return [3
+          /*break*/
+          , 11];
+          return [4
+          /*yield*/
+          , __await(_a.call(iterable_2))];
+
+        case 10:
+          _c.sent();
+
+          _c.label = 11;
+
+        case 11:
+          return [3
+          /*break*/
+          , 13];
+
+        case 12:
+          if (e_2) throw e_2.error;
+          return [7
+          /*endfinally*/
+          ];
+
+        case 13:
+          return [7
+          /*endfinally*/
+          ];
+
+        case 14:
+          return [2
+          /*return*/
+          ];
+      }
+    });
+  });
+}
+/**
+ * @memberof asyncIterable
+ */
+
+function filterAsyncIterableF(callbackFn, iterable) {
+  return __asyncGenerator(this, arguments, function filterAsyncIterableF_1() {
+    var e_3, _a, iterable_3, iterable_3_1, value, v, _b, e_3_1;
+
+    return __generator(this, function (_c) {
+      switch (_c.label) {
+        case 0:
+          _c.trys.push([0, 9, 10, 15]);
+
+          iterable_3 = __asyncValues(iterable);
+          _c.label = 1;
+
+        case 1:
+          return [4
+          /*yield*/
+          , __await(iterable_3.next())];
+
+        case 2:
+          if (!(iterable_3_1 = _c.sent(), !iterable_3_1.done)) return [3
+          /*break*/
+          , 8];
+          value = iterable_3_1.value;
+          return [4
+          /*yield*/
+          , __await(value)];
+
+        case 3:
+          v = _c.sent();
+          _b = callbackFn(v, iterable);
+          if (!_b) return [3
+          /*break*/
+          , 6];
+          return [4
+          /*yield*/
+          , __await(v)];
+
+        case 4:
+          return [4
+          /*yield*/
+          , _c.sent()];
+
+        case 5:
+          _b = _c.sent();
+          _c.label = 6;
+
+        case 6:
+          _c.label = 7;
+
+        case 7:
+          return [3
+          /*break*/
+          , 1];
+
+        case 8:
+          return [3
+          /*break*/
+          , 15];
+
+        case 9:
+          e_3_1 = _c.sent();
+          e_3 = {
+            error: e_3_1
+          };
+          return [3
+          /*break*/
+          , 15];
+
+        case 10:
+          _c.trys.push([10,, 13, 14]);
+
+          if (!(iterable_3_1 && !iterable_3_1.done && (_a = iterable_3.return))) return [3
+          /*break*/
+          , 12];
+          return [4
+          /*yield*/
+          , __await(_a.call(iterable_3))];
+
+        case 11:
+          _c.sent();
+
+          _c.label = 12;
+
+        case 12:
+          return [3
+          /*break*/
+          , 14];
+
+        case 13:
+          if (e_3) throw e_3.error;
+          return [7
+          /*endfinally*/
+          ];
+
+        case 14:
+          return [7
+          /*endfinally*/
+          ];
+
+        case 15:
+          return [2
+          /*return*/
+          ];
+      }
+    });
+  });
+}
+/**
+ * @memberof asyncIterable
+ */
+
+function reduceAsyncIterableF(callbackFn, initial, iterable) {
+  var iterable_4, iterable_4_1;
+  return __awaiter(this, void 0, void 0, function () {
+    var e_4, _a, cur, value, v, e_4_1;
+
+    return __generator(this, function (_b) {
+      switch (_b.label) {
+        case 0:
+          cur = initial;
+          _b.label = 1;
+
+        case 1:
+          _b.trys.push([1, 7, 8, 13]);
+
+          iterable_4 = __asyncValues(iterable);
+          _b.label = 2;
+
+        case 2:
+          return [4
+          /*yield*/
+          , iterable_4.next()];
+
+        case 3:
+          if (!(iterable_4_1 = _b.sent(), !iterable_4_1.done)) return [3
+          /*break*/
+          , 6];
+          value = iterable_4_1.value;
+          return [4
+          /*yield*/
+          , value];
+
+        case 4:
+          v = _b.sent();
+          cur = callbackFn(cur, v, iterable);
+          _b.label = 5;
+
+        case 5:
+          return [3
+          /*break*/
+          , 2];
+
+        case 6:
+          return [3
+          /*break*/
+          , 13];
+
+        case 7:
+          e_4_1 = _b.sent();
+          e_4 = {
+            error: e_4_1
+          };
+          return [3
+          /*break*/
+          , 13];
+
+        case 8:
+          _b.trys.push([8,, 11, 12]);
+
+          if (!(iterable_4_1 && !iterable_4_1.done && (_a = iterable_4.return))) return [3
+          /*break*/
+          , 10];
+          return [4
+          /*yield*/
+          , _a.call(iterable_4)];
+
+        case 9:
+          _b.sent();
+
+          _b.label = 10;
+
+        case 10:
+          return [3
+          /*break*/
+          , 12];
+
+        case 11:
+          if (e_4) throw e_4.error;
+          return [7
+          /*endfinally*/
+          ];
+
+        case 12:
+          return [7
+          /*endfinally*/
+          ];
+
+        case 13:
+          return [2
+          /*return*/
+          , cur];
+      }
+    });
+  });
+}
+/**
+ * @memberof asyncIterable
+ */
+
+function syncIterable(iterable) {
+  return takeIterableF(Infinity, iterable);
+}
+
+export { eachArrayF, eachArray, mapArrayF, mapArray, reduceArrayF, reduceArray, filterArrayF, filterArray, headArray, tailArray, takeArrayF, takeArray, syncArray, reduceAsyncArrayF, reduceAsyncArray, eachAsyncArrayF, eachAsyncArray, mapAsyncArrayF, mapAsyncArray, filterAsyncArrayF, reduceObjectF, eachObjectF, mapObjectF, filterObjectF, values$1 as values, keys, headObject, tailObject, takeObjectF, syncObject, reduceAsyncObjectF, eachAsyncObjectF, mapAsyncObjectF, filterAsyncObjectF, reduceIterableF, eachIterableF, mapIterableF, filterIterableF, headIterable, tailIterable, getIterator, takeIterableF, eachAsyncIterableF, mapAsyncIterableF, filterAsyncIterableF, reduceAsyncIterableF, syncIterable };
 //# sourceMappingURL=fjx.esm.js.map

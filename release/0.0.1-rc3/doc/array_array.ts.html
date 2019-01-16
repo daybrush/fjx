@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>array/array.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/custom.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="description" content="Home - Documentation"/>
+    <meta name="description" content="array/array.ts - Documentation"/>
 
 </head>
 <body>
@@ -31,102 +31,155 @@
 
 <div id="main">
     
+    <h1 class="page-title">array/array.ts</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { PromiseReturnType,
+  CheckPromiseType, CheckIterableType,
+  CheckPromiseIterableType, Curry2, Curry1 } from "../types";
+import { exec, curry } from "../utils";
 
+/**
+* @namespace array
+*/
+/**
+* @memberof array
+* @typedef
+*/
+export type EachArrayCallbackType&lt;T, U, R extends Array&lt;T | Promise&lt;T>> = T[]> =
+  (value: T, key: number, iterator: R) => U;
 
+/**
+* @memberof array
+* @typedef
+*/
+export type ReduceArrayCallbackType&lt;T, U, R extends Array&lt;U | Promise&lt;U>> = U[]> =
+  (previousValue: T, currentValue: U, currentIndex: number, arr: R) => T;
+/**
+* @memberof array
+* @typedef
+*/
+export type ArrayPromiseReturnType&lt;T extends any[]> = CheckPromiseType&lt;
+  CheckIterableType&lt;T>,
+  PromiseReturnType&lt;Array&lt;CheckPromiseIterableType&lt;T>>>,
+  Array&lt;CheckPromiseIterableType&lt;T>>>;
+/**
+ * @memberof array
+ */
+export function eachArrayF&lt;T>(f: EachArrayCallbackType&lt;T, void>, arr: T[]): T[] {
+  arr.forEach(f);
+  return arr;
+}
 
+/**
+ * @memberof array
+ * @function
+ */
+export const eachArray:
+  (&lt;T = any>(f: EachArrayCallbackType&lt;T, void>) => &lt;U extends T>(arr: U[]) => U[]) &amp;
+  (&lt;T = any>(f: EachArrayCallbackType&lt;T, void>, arr: T[]) => T[]) =
+  /*#__PURE__*/curry(eachArrayF);
 
+/**
+ * @memberof array
+ */
+export function mapArrayF&lt;T, U>(f: EachArrayCallbackType&lt;T, U>, arr: T[]): U[] {
+  return arr.map(f);
+}
+/**
+ * @memberof array
+ * @function
+ */
+export const mapArray:
+ (&lt;T = any, U = any>(f: EachArrayCallbackType&lt;T, U>) => &lt;A extends T, B extends U>(arr: A[]) => B[]) &amp;
+ (&lt;T = any, U = any>(f: EachArrayCallbackType&lt;T, U>, arr: T[]) => U[]) =
+ /*#__PURE__*/curry(mapArrayF);
+/**
+ * @memberof array
+ */
+export function reduceArrayF&lt;T, U>(
+  callbackFn: ReduceArrayCallbackType&lt;T, U>,
+  initial: T,
+  arr: U[]): T {
+  return arr.reduce(callbackFn, initial);
+}
 
+/**
+ * @memberof array
+ * @function
+ */
+export const reduceArray:
+  (&lt;T, U>(callbackFn: ReduceArrayCallbackType&lt;T, U>) => Curry2&lt;T, U[], T>) &amp;
+  (&lt;T, U>(callbackFn: ReduceArrayCallbackType&lt;T, U>, initial: T) => Curry1&lt;U[], T>) &amp;
+  (&lt;T, U>(callbackFn: ReduceArrayCallbackType&lt;T, U>, initial: T, arr: U[]) => T) =
+  /*#__PURE__*/curry(reduceArrayF);
 
+/**
+ * @memberof array
+ */
+export function filterArrayF&lt;T>(f: EachArrayCallbackType&lt;T, boolean>, arr: T[]): T[] {
+  return arr.filter(f);
+}
 
+/**
+ * @memberof array
+ * @function
+ */
+export const filterArray:
+ (&lt;T = any>(f: EachArrayCallbackType&lt;T, boolean>) => Curry1&lt;T[], T[]>) &amp;
+ (&lt;T = any>(f: EachArrayCallbackType&lt;T, boolean>, arr: T[]) => T[]) =
+ /*#__PURE__*/ curry(filterArrayF);
 
+/**
+ * @memberof array
+ */
+export function headArray&lt;T>(iterator: T[]): T {
+  return iterator[0];
+}
 
-    
+/**
+ * @memberof array
+ */
+export function tailArray&lt;T>(iterator: T[]): T {
+  return iterator[iterator.length - 1];
+}
 
+export function takeArrayF&lt;T extends any[]>(length: number, arr: T):
+  ArrayPromiseReturnType&lt;T>;
+/**
+ * @memberof array
+ */
+export function takeArrayF&lt;T extends any[]>(length: number, arr: T) {
+  const arrLength = Math.min(length, arr.length);
+  const arr2 = arr.slice(0, arrLength);
 
-    <section class="readme">
-        <article><h1>fjx  <a href="https://badge.fury.io/js/fjx"><img src="https://badge.fury.io/js/fjx.svg" alt="npm version"></a> <a href="https://travis-ci.org/daybrush/fjx"><img src="https://travis-ci.org/daybrush/fjx.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/daybrush/fjx?branch=master"><img src="https://coveralls.io/repos/github/daybrush/fjx/badge.svg?branch=master" alt="Coverage Status"></a></h1>
-<p>fjx is an functional javascript extension. Support Typescript</p>
-<p>Tree shaking is supported and only used functions are included.</p>
-<p><a href="http://daybrush.com/fjx/release/latest/doc"><strong>API Documentation</strong></a></p>
-<h2>utils</h2>
-<ul>
-<li>curry (The type supports up to five arguments of the function.)</li>
-<li>pipe (The type supports up to five arguments of the function.)</li>
-<li>compose (The type supports up to five arguments of the function.)</li>
-<li>exec</li>
-<li>isIterable</li>
-<li>isIterator</li>
-</ul>
-<h2>functions</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>array</th>
-<th>object</th>
-<th>iterable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>each</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>map</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>filter</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>reduce</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>head</td>
-<td>array</td>
-<td>object</td>
-<td>iterable</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>array</td>
-<td>object</td>
-<td>iterable</td>
-</tr>
-<tr>
-<td>take</td>
-<td>asyncArray</td>
-<td>asyncObject</td>
-<td>asyncIterable</td>
-</tr>
-<tr>
-<td>sync</td>
-<td>asyncArray</td>
-<td>asyncObject</td>
-<td>asyncIterable</td>
-</tr>
-</tbody>
-</table></article>
+  return reduceArrayF((prev, cur) => {
+    return exec(p => exec(c => {
+      p.push(c);
+      return p;
+    }, cur), prev);
+  }, [] as T | Promise&lt;T>, arr2);
+}
+
+/**
+ * @memberof array
+ * @function
+ */
+export const takeArray:
+(&lt;T extends any[]>(length: number) =>
+  &lt;U extends T>(arr: U) => ArrayPromiseReturnType&lt;U>) &amp;
+ (&lt;T extends any[]>(length: number, arr: T) => ArrayPromiseReturnType&lt;T>) =
+ /*#__PURE__*/ curry(takeArrayF);
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
@@ -134,18 +187,11 @@
 
 <style>
 
-nav>.search+ul li:first-child:after {
+
+nav li[file="array/array"]:after {
     display: none;
 }
-nav>.search+ul li:first-child h4, nav>.search+ul li:first-child ul {
-    display: block;
-}
-
-
-nav li[file="home"]:after {
-    display: none;
-}
-nav li[file="home"] h4, nav li[file="home"] ul {
+nav li[file="array/array"] h4, nav li[file="array/array"] ul {
     display: block;
 }
 </style>

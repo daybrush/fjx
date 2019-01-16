@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Global - Documentation</title>
+    <title>event - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/custom.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="description" content="Global - Documentation"/>
+    <meta name="description" content="event - Documentation"/>
 
 </head>
 <body>
@@ -31,7 +31,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">event</h1>
     
 
     
@@ -44,7 +44,7 @@
 <header>
     
         <h2>
-        
+        event
         </h2>
         
     
@@ -57,6 +57,11 @@
 
 <dl class="details">
 
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="event_event.ts.html">event/event.ts</a>, <a href="event_event.ts.html#line1">line 1</a>
+    </li></ul></dd>
     
 
     
@@ -118,7 +123,7 @@
 
         
                 
-<h4 class="name" id="CheckIterableType">CheckIterableType&lt;T&gt;</h4>
+<h4 class="name" id=".CallbackType">CallbackType&lt;T = any&gt;</h4>
 
 
 
@@ -129,7 +134,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line8">line 8</a>
+        <a href="event_event.ts.html">event/event.ts</a>, <a href="event_event.ts.html#line9">line 9</a>
     </li></ul></dd>
     
 
@@ -174,7 +179,7 @@
     <ul>
         <li>
             
-<span class="param-type">T extends Iterable&lt;infer U> ? U : T</span>
+<span class="param-type">(...args: any[]) => T</span>
 
 
         </li>
@@ -187,7 +192,7 @@
 
             
                 
-<h4 class="name" id="Curry1">Curry1&lt;A = any, B = any&gt;</h4>
+<h4 class="name" id=".EventInterface">EventInterface</h4>
 
 
 
@@ -198,145 +203,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line88">line 88</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">&lt;C extends A = A, D extends B = B>(a: C) => D</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Curry1CallbackType">Curry1CallbackType&lt;A, B&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line83">line 83</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">(a: A) => B</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Curry2">Curry2&lt;A = any, B = any, C = any&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line75">line 75</a>
+        <a href="event_event.ts.html">event/event.ts</a>, <a href="event_event.ts.html#line23">line 23</a>
     </li></ul></dd>
     
 
@@ -399,13 +266,13 @@
 
         <tr>
             
-                <td class="name"><code><D extends A = A, E extends B = B, F extends C = C>(a: D)</code></td>
+                <td class="name"><code>on</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Curry1">Curry1</a>&lt;E, F></span>
+<span class="param-type">(name: string | <a href="event.html#.EventParamterInterface">EventParamterInterface</a>, callback?: <a href="event.html#.CallbackType">CallbackType</a> | <a href="event.html#.CallbackType">CallbackType</a>[]) => this</span>
 
 
             
@@ -422,13 +289,36 @@
 
         <tr>
             
-                <td class="name"><code><D extends A = A, E extends B = B, F extends C = C>(a: D, b: E)</code></td>
+                <td class="name"><code>once</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">F</span>
+<span class="param-type">(name: string | <a href="event.html#.EventParamterInterface">EventParamterInterface</a>, callback?: <a href="event.html#.CallbackType">CallbackType</a> | <a href="event.html#.CallbackType">CallbackType</a>[]) => this</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>off</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">(name?: string, callback?: <a href="event.html#.CallbackType">CallbackType</a>) => this</span>
 
 
             
@@ -469,7 +359,7 @@
 
             
                 
-<h4 class="name" id="Curry3">Curry3&lt;A, B, C, D&gt;</h4>
+<h4 class="name" id=".EventParamterInterface">EventParamterInterface</h4>
 
 
 
@@ -480,7 +370,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line62">line 62</a>
+        <a href="event_event.ts.html">event/event.ts</a>, <a href="event_event.ts.html#line15">line 15</a>
     </li></ul></dd>
     
 
@@ -543,59 +433,13 @@
 
         <tr>
             
-                <td class="name"><code><E extends A = A, F extends B = B, G extends C = C, H extends D = D>(a: E)</code></td>
+                <td class="name"><code>[name: string]</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="global.html#Curry2">Curry2</a>&lt;F, G, H></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code><E extends A = A, F extends B = B, G extends C = C, H extends D = D>(a: E, b: F)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Curry1">Curry1</a>&lt;G, H></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code><E extends A = A, F extends B = B, G extends C = C, H extends D = D>(a: E, b: F, c: G)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">H</span>
+<span class="param-type"><a href="event.html#.CallbackType">CallbackType</a> | <a href="event.html#.CallbackType">CallbackType</a>[]</span>
 
 
             
@@ -624,541 +468,6 @@
         <li>
             
 <span class="param-type">TSInterface</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Curry3CallbackType">Curry3CallbackType&lt;A, B, C, D&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line57">line 57</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">(a: A, b: B, c: C) => D</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Curry4">Curry4&lt;A, B, C, D, E&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line43">line 43</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code><F extends A = A, G extends B = B, H extends C = C, I extends D = D, J extends E = E>(a: F)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Curry3">Curry3</a>&lt;G, H, I, J></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code><F extends A = A, G extends B = B, H extends C = C, I extends D = D, J extends E = E>(a: F, b: G)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Curry2">Curry2</a>&lt;H, I, J></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code><F extends A = A, G extends B = B, H extends C = C, I extends D = D, J extends E = E>(a: F, b: G, c: H)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type"><a href="global.html#Curry1">Curry1</a>&lt;I, J></span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code><F extends A = A, G extends B = B, H extends C = C, I extends D = D, J extends E = E>(a: F, b: G, c: H, d: I)</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">J</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">TSInterface</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Curry4CallbackType">Curry4CallbackType&lt;A, B, C, D, E&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line39">line 39</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">(a: A, b: B, c: C, d: D) => E</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="Func">Func&lt;A = any, B = any&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line31">line 31</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">(a: A) => B</span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="IteratorType">IteratorType&lt;T = any&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">Iterable&lt;T> | <a href="http://daybrush.com/utils/release/latest/doc/global.html#ObjectInterface" target="_blank">ObjectInterface</a>&lt;T></span>
-
-
-        </li>
-    </ul>
-
-
-
-
-
-
-            
-                
-<h4 class="name" id="PureType">PureType&lt;T&gt;</h4>
-
-
-
-
-
-<dl class="details">
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="types.ts.html">types.ts</a>, <a href="types.ts.html#line12">line 12</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-    <h5>Type:</h5>
-    <ul>
-        <li>
-            
-<span class="param-type">T extends infer U | Promise&lt;infer U> ? U : never</span>
 
 
         </li>
@@ -1184,10 +493,10 @@
 <style>
 
 
-nav li[file="global"]:after {
+nav li[file="event"]:after {
     display: none;
 }
-nav li[file="global"] h4, nav li[file="global"] ul {
+nav li[file="event"] h4, nav li[file="event"] ul {
     display: block;
 }
 </style>

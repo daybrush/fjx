@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Documentation</title>
+    <title>object/object.ts - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -13,7 +13,7 @@
     <link type="text/css" rel="stylesheet" href="styles/jsdoc.css">
     <link type="text/css" rel="stylesheet" href="styles/custom.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-    <meta name="description" content="Home - Documentation"/>
+    <meta name="description" content="object/object.ts - Documentation"/>
 
 </head>
 <body>
@@ -31,102 +31,135 @@
 
 <div id="main">
     
+    <h1 class="page-title">object/object.ts</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { ObjectInterface } from "@daybrush/utils";
+import { headArray, tailArray, reduceArrayF } from "../array/array";
+import { exec } from "../utils";
+import { CheckPromiseType, CheckObjectType, CheckPromiseObjectType, PromiseReturnType } from "../types";
+/**
+ * @namespace object
+ */
+/**
+ * @memberof object
+ * @typedef
+ */
+export type EachObjectCallbackType&lt;T, U, R extends ObjectInterface&lt;T | Promise&lt;T>> = ObjectInterface&lt;T>> =
+   (value: T, key: string, obj: R) => U;
 
+/**
+ * @memberof object
+ * @typedef
+ */
+export type ReduceObjectCallbackType&lt;T, U, R extends ObjectInterface&lt;U | Promise&lt;U>> = ObjectInterface&lt;U>> =
+(previousValue: T, currentValue: U, currentIndex: string, obj: R) => T;
 
+/**
+ * @memberof object
+ */
+export function reduceObjectF&lt;T, U = T>(
+  callbackFn: ReduceObjectCallbackType&lt;T, U>,
+  initial: T,
+  obj: ObjectInterface&lt;U>): T {
+  let cur = initial;
 
+  for (const key in obj) {
+    cur = callbackFn(cur, obj[key], key, obj);
+  }
+  return cur;
+}
 
+/**
+ * @memberof object
+ */
+export function eachObjectF&lt;T = any>(f: EachObjectCallbackType&lt;T, void>, obj: ObjectInterface&lt;T>):
+  ObjectInterface&lt;T> {
+  for (const key in obj) {
+    f(obj[key], key, obj);
+  }
+  return obj;
+}
+/**
+ * @memberof object
+ */
+export function mapObjectF&lt;T = any, U = any>(f: EachObjectCallbackType&lt;T, U>, obj: ObjectInterface&lt;T>):
+  ObjectInterface&lt;U> {
+  const rv: ObjectInterface&lt;U> = {};
 
+  for (const key in obj) {
+    rv[key] = f(obj[key], key, obj);
+  }
+  return rv;
+}
 
+/**
+ * @memberof object
+ */
+export function filterObjectF&lt;T = any>(f: EachObjectCallbackType&lt;T, boolean>, obj: ObjectInterface&lt;T>):
+  ObjectInterface&lt;T> {
+  const rv: Partial&lt;ObjectInterface&lt;T>> = {};
 
+  for (const key in obj) {
+    f(obj[key], key, obj) &amp;&amp; (rv[key] = obj[key]);
+  }
+  return rv;
+}
+/**
+ * @memberof object
+ */
+export function values&lt;T>(obj: ObjectInterface&lt;T>): T[] {
+  return Object.values(obj);
+}
+/**
+ * @memberof object
+ */
+export function keys&lt;T extends ObjectInterface&lt;T>>(obj: ObjectInterface&lt;T>): Array&lt;keyof T &amp; string> {
+  return Object.keys(obj);
+}
+/**
+ * @memberof object
+ */
+export function headObject&lt;T>(obj: ObjectInterface&lt;T>): T {
+  return headArray(values(obj));
+}
 
+/**
+ * @memberof object
+ */
+export function tailObject&lt;T>(obj: ObjectInterface&lt;T>): T {
+  return tailArray(values(obj));
+}
 
-    
+export function takeObjectF&lt;T extends ObjectInterface&lt;any>>(length: number, obj: T):
+  CheckPromiseType&lt;CheckObjectType&lt;T>,
+  PromiseReturnType&lt;ObjectInterface&lt;CheckPromiseObjectType&lt;T>>>,
+  ObjectInterface&lt;CheckPromiseObjectType&lt;T>>>;
+/**
+ * @memberof object
+ */
+export function takeObjectF&lt;T extends ObjectInterface&lt;any>>(length: number, obj: T) {
+  const objkeys = keys(obj);
+  const arrLength = Math.min(length, objkeys.length);
+  const objkeys2 = objkeys.slice(0, arrLength);
 
-
-    <section class="readme">
-        <article><h1>fjx  <a href="https://badge.fury.io/js/fjx"><img src="https://badge.fury.io/js/fjx.svg" alt="npm version"></a> <a href="https://travis-ci.org/daybrush/fjx"><img src="https://travis-ci.org/daybrush/fjx.svg?branch=master" alt="Build Status"></a> <a href="https://coveralls.io/github/daybrush/fjx?branch=master"><img src="https://coveralls.io/repos/github/daybrush/fjx/badge.svg?branch=master" alt="Coverage Status"></a></h1>
-<p>fjx is an functional javascript extension. Support Typescript</p>
-<p>Tree shaking is supported and only used functions are included.</p>
-<p><a href="http://daybrush.com/fjx/release/latest/doc"><strong>API Documentation</strong></a></p>
-<h2>utils</h2>
-<ul>
-<li>curry (The type supports up to five arguments of the function.)</li>
-<li>pipe (The type supports up to five arguments of the function.)</li>
-<li>compose (The type supports up to five arguments of the function.)</li>
-<li>exec</li>
-<li>isIterable</li>
-<li>isIterator</li>
-</ul>
-<h2>functions</h2>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>array</th>
-<th>object</th>
-<th>iterable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>each</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>map</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>filter</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>reduce</td>
-<td>array / asyncArray</td>
-<td>object / asyncObject</td>
-<td>iterable / asyncIterable</td>
-</tr>
-<tr>
-<td>head</td>
-<td>array</td>
-<td>object</td>
-<td>iterable</td>
-</tr>
-<tr>
-<td>tail</td>
-<td>array</td>
-<td>object</td>
-<td>iterable</td>
-</tr>
-<tr>
-<td>take</td>
-<td>asyncArray</td>
-<td>asyncObject</td>
-<td>asyncIterable</td>
-</tr>
-<tr>
-<td>sync</td>
-<td>asyncArray</td>
-<td>asyncObject</td>
-<td>asyncIterable</td>
-</tr>
-</tbody>
-</table></article>
+  return reduceArrayF((prev, cur) => {
+    return exec(p => exec(c => {
+      p[cur] = obj[cur];
+      return p;
+    }, cur), prev);
+  }, {} as T | Promise&lt;T>, objkeys2);
+}
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
@@ -134,18 +167,11 @@
 
 <style>
 
-nav>.search+ul li:first-child:after {
+
+nav li[file="object/object"]:after {
     display: none;
 }
-nav>.search+ul li:first-child h4, nav>.search+ul li:first-child ul {
-    display: block;
-}
-
-
-nav li[file="home"]:after {
-    display: none;
-}
-nav li[file="home"] h4, nav li[file="home"] ul {
+nav li[file="object/object"] h4, nav li[file="object/object"] ul {
     display: block;
 }
 </style>
